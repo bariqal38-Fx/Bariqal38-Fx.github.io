@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>My Portfolio | Alif Bariq</title>
+</head>
+
+<body id="home">
+
+<!-- background grid + glow, murni dekorasi -->
+<div class="bg-grid"></div>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="#home">
+            <span class="brand-tag">&lt;</span>lifx</span><span class="brand-tag">/&gt;</span>
+        </a>
+
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#project">Project</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Hero -->
+<section class="hero d-flex align-items-center" id="hero-section">
+    <div class="container">
+
+     <img src="img/Screenshot 2026-07-20 191022.png"
+     alt="Foto Saya"
+     class="rounded-circle img-thumbnail"
+     style="width: 300px; height: 300px; object-fit: cover; object-position: center; display: block; margin: 0 auto;">
+        <div class="row align-items-center">
+
+
+            <!-- Kiri: teks intro -->
+             
+            <div class="col-lg-6 order-2 order-lg-1 text-center text-lg-start">
+                <p class="eyebrow mb-3">
+                    <span class="dot"></span> Terbuka untuk kolaborasi
+                </p>
+
+                <h1 class="hero-title mb-3">
+                    Perkenalkan Saya <class="text-gradient"><br> Alif Bariq</span>
+                </h1>
+
+                <p class="hero-role mb-4">
+                    AI | Koding Web Pemrograman<span class="cursor"></span>
+                </p>
+
+                <p class="hero-desc mb-4">
+                    Saya sedang belajar membangun program dan eksperimen kecil
+                    seputar AI. Halaman ini adalah etalase progres belajar saya —
+                    sederhana, tapi dibuat dengan niat yang serius.
+                </p>
+
+                <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+                    <a href="#project" class="btn btn-gradient">
+                        Lihat Project <i class="bi bi-arrow-down-right ms-1"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-outline-glow">
+                        Hubungi Saya
+                    </a>
+                </div>
+            </div>
+
+            <!-- Kanan: "terminal window" -->
+            <div class="col-lg-6 order-1 order-lg-2 mb-5 mb-lg-0">
+                <div class="terminal">
+                    <div class="terminal-bar">
+                        <span class="dot-red"></span>
+                        <span class="dot-yellow"></span>
+                        <span class="dot-green"></span>
+                        <span class="terminal-title">profil.Gw</span>
+                    </div>
+                    <pre class="terminal-body"><code><span class="tk-key">const</span> <span class="tk-var">developer</span> = {
+  <span class="tk-prop">nama</span>: <span class="tk-str">"Alif Bariq Al-Qalbi"</span>,
+  <span class="tk-prop">fokus</span>: [<span class="tk-str">"AI"</span>, <span class="tk-str">"Pemrograman"</span>],
+  <span class="tk-prop">status</span>: <span class="tk-str">"masih belajar, terus mencoba"</span>,
+  <span class="tk-prop">motto</span>: <span class="tk-str">"pelan tapi konsisten"</span>,
+};
+
+<span class="tk-key">export default</span> developer;</code></pre>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col">
+                <p class="section-eyebrow">Tentang</p>
+                <h2 class="section-title">About Me</h2>
+            </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center g-4">
+
+            <div class="col-lg-5">
+                <div class="about-card">
+                    <i class="bi bi-code-slash about-icon"></i>
+                    <h5>Belajar Membangun</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Vitae aut expedita dicta libero consectetur dignissimos
+                        placeat commodi voluptatem possimus officiis!
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="about-card">
+                    <i class="bi bi-stars about-icon"></i>
+                    <h5>Rasa Ingin Tahu di Bidang AI</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Temporibus nobis molestiae, harum fugiat ratione quidem
+                        soluta rerum voluptas sint, nam laudantium reiciendis
+                        inventore unde! Dicta?
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Skill badges -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10 text-center">
+                <p class="skills-label mb-3">Sedang dipelajari</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Bootstrap</span>
+                    <span class="skill-tag">Dasar AI / ML</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project -->
+<section id="project">
+    <div class="container">
+
+        <div class="row text-center mb-5">
+            <div class="col">
+                <p class="section-eyebrow">Karya</p>
+                <h2 class="section-title">My Project</h2>
+            </div>
+        </div>
+
+        <div class="row justify-content-center g-4">
+
+            <div class="col-md-2 col-lg-2">
+                <div class="project-card">
+                    <div class="project-img-wrap">
+                        <img src="project/1.jpg" class="project-img" alt="Project 1">
+                    </div>
+                    <div class="project-body">
+                        <h6>Project Satu</h6>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem, dolor.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-lg-2">
+                <div class="project-card">
+                    <div class="project-img-wrap">
+                        <img src="project/2.jpg" class="project-img" alt="Project 2">
+                    </div>
+                    <div class="project-body">
+                        <h6>Project Dua</h6>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid, in.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-lg-2">
+                <div class="project-card">
+                    <div class="project-img-wrap">
+                        <img src="project/3.jpg" class="project-img" alt="Project 3">
+                    </div>
+                    <div class="project-body">
+                        <h6>Project Tiga</h6>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, quas?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-lg-2">
+                <div class="project-card">
+                    <div class="project-img-wrap">
+                        <img src="project/4.jpg" class="project-img" alt="Project 4">
+                    </div>
+                    <div class="project-body">
+                        <h6>Project Empat</h6>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, eveniet!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-lg-5 mt-4">
+                <div class="project-card">
+                    <div class="project-img-wrap">
+                        <img src="project/5.jpg" class="project-img" alt="Project 5">
+                    </div>
+                    <div class="project-body">
+                        <h6>Project Lima</h6>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus, eos!</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Kontak -->
+<section id="contact">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col">
+                <p class="section-eyebrow">Kontak</p>
+                <h2 class="section-title">Contact Me</h2>
+                <p class="section-sub">Ada pertanyaan atau mau kolaborasi? Kirim pesan lewat form di bawah.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <form class="contact-form">
+                    <div class="mb-3">
+                        <label for="Nama" class="form-label">Nama Lengkap</label>
+                        <input type="text" class="form-control" id="Nama" placeholder="Nama kamu">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="Email" placeholder="nama@email.com">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Pesan" class="form-label">Pesan</label>
+                        <textarea class="form-control" id="Pesan" rows="4" placeholder="Tulis pesanmu di sini..."></textarea>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-gradient px-5">
+                            Kirim <i class="bi bi-send ms-1"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center">
+    <p class="mb-0">
+        create with <i class="bi bi-suit-heart-fill text-danger"></i> by
+        <a href="https://www.instagram.com/alifbariqq?igsh=dXNmMDBrZ3l3cGxj&utm_source=qr">
+            AlifBariq
+        </a>
+    </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
