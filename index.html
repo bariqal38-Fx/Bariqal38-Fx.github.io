@@ -1,434 +1,420 @@
-<!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alif Bariq | Future-Tech & Portfolio</title>
+    <!DOCTYPE html>
+    <html lang="id" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Portofolio Alif Bariq Al-Qalbi - Software Engineering, AI Exploration, dan Financial Market Analysis.">
+        <title>Alif Bariq | Luxury Tech Portfolio</title>
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+        <!-- Bootstrap 5 CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+        <script>document.documentElement.classList.add('js');</script>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body id="home">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
-</head>
-<body id="home">
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
 
-<!-- Scroll Progress Bar -->
-<div id="scroll-progress"></div>
+    <!-- Atmospheric Glow Elements -->
+    <div class="bg-grid"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
+    <div id="mouse-glow"></div>
 
-<!-- Background Elements -->
-<div class="bg-grid"></div>
-<div class="glow glow-1"></div>
-<div class="glow glow-2"></div>
-<div class="glow glow-3"></div>
-<div id="mouse-glow"></div>
+    <!-- Navbar Modern -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <span class="brand-tag"></span><span class="brand-name">AlifBariq</span><span class="brand-tag"> /</span>
+            </a>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand" href="#home">
-            <span class="brand-tag">&lt;</span><span class="brand-name">AlifBariq</span><span class="brand-tag"> /&gt;</span>
-        </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="bi bi-list fs-1 text-gold"></span>
+            </button>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="bi bi-list fs-2 text-white"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#sertifikat">Sertifikat</a></li>
-                <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<!-- Hero Section -->
-<section class="hero d-flex align-items-center" id="hero-section">
-    <div class="container position-relative z-2">
-        <div class="row align-items-center g-5">
-            <!-- Left Side: Profile Image & Text -->
-            <div class="col-lg-6 text-center text-lg-start fade-up">
-                <div class="profile-avatar-wrapper mb-4">
-                    <img src="img/Screenshot 2026-07-20 191022.png" alt="Alif Bariq" class="profile-avatar">
-                    <div class="avatar-glow"></div>
-                </div>
-
-                <div class="eyebrow mb-3">
-                    <span class="dot"></span> Terbuka untuk Kolaborasi & Inovasi
-                </div>
-
-                <h1 class="hero-title mb-3">
-                    Halo, Saya <br><span class="text-gradient">Alif Bariq Al-Qalbi</span>
-                </h1>
-
-                <!-- Dynamic Typing Effect Target -->
-                <p class="hero-role mb-4">
-                    <span id="typing-text"></span><span class="cursor">|</span>
-                </p>
-
-                <p class="hero-desc mb-4">
-                    Eksplorasi tanpa batas di dunia Rekayasa Perangkat Lunak, Kecerdasan Buatan, serta Analisis Financial Market. Halaman ini adalah etalase perjalanan dan progres eksplorasi saya.
-                </p>
-
-                <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
-                    <a href="#work" class="btn btn-gradient btn-ripple">
-                        Lihat Proyek <i class="bi bi-arrow-down-right ms-1"></i>
-                    </a>
-                    <a href="#contact" class="btn btn-outline-glow btn-ripple">
-                        Hubungi Saya
-                    </a>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sertifikat">Sertifikat</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
             </div>
+        </div>
+    </nav>
 
-            <!-- Right Side: Interactive Terminal Window -->
-            <div class="col-lg-6 fade-up" style="animation-delay: 0.2s;">
-                <div class="terminal-card glass-card">
-                    <div class="terminal-bar">
-                        <span class="dot-red"></span>
-                        <span class="dot-yellow"></span>
-                        <span class="dot-green"></span>
-                        <span class="terminal-title">Alif.FX</span>
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center" id="hero-section">
+        <div class="container position-relative z-2">
+            <div class="row align-items-center g-5">
+                <!-- Hero Left -->
+                <div class="col-lg-6 text-center text-lg-start fade-up">
+                    <div class="profile-avatar-wrapper mb-4">
+                        <img src="img/Screenshot 2026-07-20 191022.png" alt="Foto Profil Alif Bariq Al-Qalbi" class="profile-avatar">
+                        <div class="avatar-glow"></div>
                     </div>
-                    <pre class="terminal-body"><code><span class="tk-key">const</span> <span class="tk-var">developer</span> = {
-  <span class="tk-prop">name</span>: <span class="tk-str">"Alif Bariq Al-Qalbi"</span>,
-  <span class="tk-prop">focus</span>: [<span class="tk-str">"Artificial Intelligence"</span>, <span class="tk-str">"Web Dev"</span>, <span class="tk-str">"Trading"</span>],
-  <span class="tk-prop">mindset</span>: <span class="tk-str">"Continuous Improvement & Data-Driven"</span>,
-  <span class="tk-prop">status</span>: <span class="tk-str">"Building the Future"</span>
-};
 
-<span class="tk-key">export default</span> developer;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                    <div class="eyebrow mb-3">
+                        <span class="dot"></span> Terbuka untuk Kolaborasi &amp; Inovasi
+                    </div>
 
-<!-- About Section -->
-<section id="about">
-    <div class="container">
-        <div class="row text-center mb-5 fade-up">
-            <div class="col">
-                <p class="section-eyebrow">// TENTANG SAYA</p>
-                <h2 class="section-title">About Me</h2>
-                <div class="title-line"></div>
-            </div>
-        </div>
+                    <h1 class="hero-title mb-3">
+                        Halo, Saya <br><span class="text-gradient">Alif Bariq Al-Qalbi</span>
+                    </h1>
 
-        <div class="row justify-content-center align-items-stretch g-4">
-            <div class="col-lg-5 fade-up">
-                <div class="about-card glass-card">
-                    <i class="bi bi-code-slash about-icon"></i>
-                    <h5>Pengembangan Perangkat Lunak</h5>
-                    <p>
-                        Berfokus pada pembuatan antarmuka yang bersih, responsif, dan fungsional. Selalu mencari pendekatan efisien dalam memecahkan masalah koding.
+                    <p class="hero-role mb-4">
+                        <span id="typing-text"></span><span class="cursor">|</span>
                     </p>
-                </div>
-            </div>
 
-            <div class="col-lg-5 fade-up" style="animation-delay: 0.2s;">
-                <div class="about-card glass-card">
-                    <i class="bi bi-cpu about-icon"></i>
-                    <h5>Eksplorasi AI & Sains Data</h5>
-                    <p>
-                        Memiliki antusiasme tinggi pada penerapan algoritma kecerdasan buatan, pemrosesan data, dan integrasi modul cerdas ke dalam platform modern.
+                    <p class="hero-desc mb-4">
+                        Eksplorasi tanpa batas di dunia Rekayasa Perangkat Lunak, Kecerdasan Buatan, serta Analisis Financial Market. Halaman ini adalah etalase perjalanan dan progres eksplorasi saya.
                     </p>
+
+                    <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+                        <a href="#work" class="btn btn-gradient btn-ripple">
+                            Lihat Proyek <i class="bi bi-arrow-down-right ms-1"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-outline-glow btn-ripple">
+                            Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right Terminal -->
+                <div class="col-lg-6 fade-up">
+                    <div class="terminal-card glass-card">
+                        <div class="terminal-bar">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                            <span class="terminal-title">Alif.FX — v2.0</span>
+                        </div>
+                        <pre class="terminal-body"><code><span class="tk-key">const</span> <span class="tk-var">developer</span> = {
+    <span class="tk-prop">name</span>: <span class="tk-str">"Alif Bariq Al-Qalbi"</span>,
+    <span class="tk-prop">focus</span>: [<span class="tk-str">"Artificial Intelligence"</span>, <span class="tk-str">"Web Dev"</span>, <span class="tk-str">"Trading"</span>],
+    <span class="tk-prop">mindset</span>: <span class="tk-str">"Continuous Improvement &amp; Data-Driven"</span>,
+    <span class="tk-prop">status</span>: <span class="tk-str">"Building the Future"</span>
+    };
+
+    <span class="tk-key">export default</span> developer;</code></pre>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- MY sertifikat SECTION -->
-<section id="sertifikat">
-    <div class="container">
-        <!-- 1. SKILL AKADEMIK & PRESTASI DAKWAH -->
-        <div class="row text-center mb-5 fade-up">
-            <div class="col">
-                <p class="section-eyebrow">// PRESTASI & PENDIDIKAN</p>
-                <h2 class="section-title">Sertifikat</h2>
-                <p class="section-sub">Penghargaan dan rekam jejak prestasi dalam ajang Lomba Dai, Penulis , serta Komunikasi Islami.</p>
-                <div class="title-line"></div>
-            </div>
-        </div>
-
-        <!-- 5 Slots Academic Cards Grid (Disesuaikan khusus Sertifikat Dai & Public Speaking) -->
-        <div class="row g-4 justify-content-center mb-5">
-            
-          <div class="row">
-  <div class="row justify-content-center">
-    <!-- Card 1 -->
-    <div class="col-md-6 col-lg-4 fade-up">
-        <div class="academic-card glass-card">
-            <div class="academic-img-wrap">
-                <img src="akademik/ser1.png" alt="Sertifikat Juara Lomba Dai 1" class="academic-img">
-            </div>
-            <div class="academic-body">
-                <span class="badge-year">2023</span>
-                <h6>Dai Muda</h6>
-                <p>Penghargaan atas kemampuan retorika, penguasaan materi keagamaan, dan penyampaian dakwah bernuansa Islami tingkat regional. Sertifikat ini diperoleh atas partisipasi sebagai peserta Lomba Da'i pada kegiatan IMCO VII (Islamic Mainspring Competition VII) yang diselenggarakan oleh SMA Negeri 9 Malang.</p>
-                <a href="akademik/ser1.png" target="_blank" class="btn btn-sm btn-outline-glow w-100 mt-3">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="col-md-6 col-lg-4 fade-up" style="animation-delay: 0.1s;">
-        <div class="academic-card glass-card">
-            <div class="academic-img-wrap">
-                <img src="akademik/ser2.png" alt="Sertifikat Lomba Dai Tingkat Kota" class="academic-img">
-            </div>
-            <div class="academic-body">
-                <span class="badge-year">2023</span>
-                <h6>Piagam Penghargaan Penulis Nasional</h6>
-                <p>Bentuk apresiasi atas dedikasi dan kontribusi aktif dalam bidang literasi nasional melalui program Gerakan Sekolah Menulis Buku Nasional (GSMB Nasional) yang diselenggarakan oleh Nyalanesia.</p>
-                <a href="akademik/ser2.png" target="_blank" class="btn btn-sm btn-outline-glow w-100 mt-3">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="col-md-6 col-lg-4 fade-up" style="animation-delay: 0.2s;">
-        <div class="academic-card glass-card">
-            <div class="academic-img-wrap">
-                <img src="akademik/ser3.png" alt="Sertifikat Penghargaan Dai Terbaik" class="academic-img">
-            </div>
-            <div class="academic-body">
-                <span class="badge-year">2023</span>
-                <h6>Kompetensi Menulis</h6>
-                <p>Sertifikat kompetensi yang membuktikan keahlian dan kepiawaian dalam mengolah kata serta menyusun karya tulis melalui keikutsertaan dalam rangkaian program pelatihan/penulisan literasi tingkat nasional.</p>
-                <a href="akademik/ser3.png" target="_blank" class="btn btn-sm btn-outline-glow w-100 mt-3">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="col-md-6 col-lg-4 fade-up" style="animation-delay: 0.3s;">
-        <div class="academic-card glass-card">
-            <div class="academic-img-wrap">
-                <img src="akademik/ser4.png" alt="Sertifikat Pidato & Syiar Islam" class="academic-img">
-            </div>
-            <div class="academic-body">
-                <span class="badge-year">2024</span>
-                <h6>Akademi Penyair juara Nyalanesia</h6>
-                <p>Sertifikat kelulusan/partisipasi dalam Workshop 52 Jam Akademi Penyair Juara Nyalanesia. Penghargaan ini menegaskan komitmen tinggi dalam mengasah bakat kepenyairan dan keterampilan seni sastra secara intensif.</p>
-                <a href="akademik/ser4.png" target="_blank" class="btn btn-sm btn-outline-glow w-100 mt-3">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="col-md-6 col-lg-4 fade-up" style="animation-delay: 0.4s;">
-        <div class="academic-card glass-card">
-            <div class="academic-img-wrap">
-                <img src="akademik/ser5.png" alt="Sertifikat Keikutsertaan & Dedikasi Dai" class="academic-img">
-            </div>
-            <div class="academic-body">
-                <span class="badge-year">2025</span>
-                <h6>Piagam Penghargaan, Juara Satu Dai</h6>
-                <p>Penghargaan sebagai Juara I Lomba Dai dalam rangka Peringatan Isra' Mi'raj Nabi Muhammad SAW. Prestasi ini menunjukkan keaktifan, dedikasi, serta keahlian public speaking dalam menginspirasi generasi muda melalui komunikasi panggung Islami.</p>
-                <a href="akademik/ser5.png" target="_blank" class="btn btn-sm btn-outline-glow w-100 mt-3">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
-            </div>
-        </div>
-    </div>
-</div>
-        <!-- 2. SKILL NON AKADEMIK (TRADING FINTECH THEME) -->
-        <div class="trading-container glass-card p-4 p-lg-5 mt-5 fade-up position-relative overflow-hidden">
-            <!-- Animated Trading Chart Background -->
-            <div class="trading-bg-chart"></div>
-            
-            <div class="row text-center mb-4 position-relative z-2">
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="row text-center mb-5 fade-up">
                 <div class="col">
-                    <p class="section-eyebrow text-highlight">// FINANCIAL ANALYTICS & MARKET</p>
-                    <h2 class="section-title">Unik Skill</h2>
-                    <p class="section-sub text-light-dim">
-                        "Saat ini saya sedang menekuni dunia Financial Market, khususnya Forex Trading. Saya terus belajar dan mengembangkan kemampuan dalam menganalisis market menggunakan pendekatan teknikal."
-                    </p>
+                    <p class="section-eyebrow">// TENTANG SAYA</p>
+                    <h2 class="section-title">About Me</h2>
+                    <div class="title-line"></div>
                 </div>
             </div>
 
-            <!-- Trading Badges -->
-            <div class="d-flex flex-wrap gap-2 justify-content-center mb-5 position-relative z-2">
-                <span class="trading-badge"><i class="bi bi-graph-up-arrow me-1"></i> Forex Finance</span>
-                <span class="trading-badge"><i class="bi bi-diagram-3 me-1"></i> Market Structure</span>
-                <span class="trading-badge"><i class="bi bi-bar-chart-steps me-1"></i> Candlestick Analysis</span>
-                <span class="trading-badge"><i class="bi bi-activity me-1"></i> Price Action</span>
-                <span class="trading-badge"><i class="bi bi-shield-check me-1"></i> Risk Management</span>
-                <span class="trading-badge"><i class="bi bi-person-badge me-1"></i> Trading Psychology</span>
-                <span class="trading-badge"><i class="bi bi-box-arrow-in-down-right me-1"></i> Supply & Demand</span>
-                <span class="trading-badge"><i class="bi bi-layers me-1"></i> Support & Resistance</span>
-                <span class="trading-badge"><i class="bi bi-droplet-half me-1"></i> Liquidity</span>
-                <span class="trading-badge"><i class="bi bi-lightning-charge me-1"></i> Break of Structure</span>
-                <span class="trading-badge"><i class="bi bi-arrow-repeat me-1"></i> Change of Character</span>
-            </div>
+            <div class="row justify-content-center align-items-stretch g-4">
+                <div class="col-lg-5 fade-up">
+                    <div class="about-card glass-card">
+                        <i class="bi bi-code-slash about-icon"></i>
+                        <h5>Pengembangan Perangkat Lunak</h5>
+                        <p>
+                            Berfokus pada pembuatan antarmuka yang bersih, responsif, dan fungsional. Selalu mencari pendekatan efisien dalam memecahkan masalah koding.
+                        </p>
+                    </div>
+                </div>
 
-            <!-- 3 Slots Photos Non Akademik -->
-           <!-- 3 Slots Photos Non Akademik -->
-<div class="row g-4 justify-content-center position-relative z-2">
-  
-  <!-- Card 1 -->
-  <div class="col-md-4 fade-up">
-    <div class="trading-card">
-      <img src="Unik/trade1.jpeg" alt="Trading 1" class="img-fluid rounded-3">
-      <div class="trading-card-overlay">
-        <h6>Market Analysis</h6>
-        <p class="small text-muted mb-0">Pemetaan struktur & analisis teknikal harian.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="col-md-4 fade-up" style="animation-delay: 0.1s;">
-    <div class="trading-card">
-      <img src="Unik/trade2.png" alt="Trading 2" class="img-fluid rounded-3">
-      <div class="trading-card-overlay">
-        <h6>Risk & Portfolio</h6>
-        <p class="small text-muted mb-0">Manajemen rasio risiko dan psikologi eksekusi.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 3 -->
-  <div class="col-md-4 fade-up" style="animation-delay: 0.2s;">
-    <div class="trading-card">
-      <img src="Unik/trade3.jpeg" alt="Trading 3" class="img-fluid rounded-3">
-      <div class="trading-card-overlay">
-        <h6>Backtesting Lab</h6>
-        <p class="small text-muted mb-0">Evaluasi historis data pergerakan harga.</p>
-      </div>
-    </div>
-  </div>
-/</div>
-</section>
-
-<!-- Project Section -->
-<section id="work">
-    <div class="container">
-        <div class="row text-center mb-5 fade-up">
-            <div class="col">
-                <p class="section-eyebrow">// AI</p>
-                <h2 class="section-title">Work Assistant </h2>
-                <div class="title-line"></div>
+                <div class="col-lg-5 fade-up">
+                    <div class="about-card glass-card">
+                        <i class="bi bi-cpu about-icon"></i>
+                        <h5>Eksplorasi AI &amp; Sains Data</h5>
+                        <p>
+                            Memiliki antusiasme tinggi pada penerapan algoritma kecerdasan buatan, pemrosesan data, dan integrasi modul cerdas ke dalam platform modern.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="row justify-content-center g-4">
-            <div class="col-md-6 col-lg-4 fade-up">
-                <div class="project-card glass-card">
-                    <div class="project-img-wrap">
-                        <img src="work/1.jpg" class="project-img" alt="Project 1" onerror="this.src='https://via.placeholder.com/400x250/12182B/7C5CFF?text=Project+1'">
+    <!-- Sertifikat Section -->
+    <section id="sertifikat">
+        <div class="container">
+            <div class="row text-center mb-5 fade-up">
+                <div class="col">
+                    <p class="section-eyebrow">// PRESTASI &amp; PENDIDIKAN</p>
+                    <h2 class="section-title">Sertifikat &amp; Penghargaan</h2>
+                    <p class="section-sub">Penghargaan dan rekam jejak prestasi dalam ajang Lomba Dai, Penulis, serta Komunikasi Islami.</p>
+                    <div class="title-line"></div>
+                </div>
+            </div>
+
+            <div class="row g-4 justify-content-center mb-5">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-4 fade-up">
+                    <div class="academic-card glass-card">
+                        <div class="academic-img-wrap">
+                            <img src="akademik/ser1.png" alt="Sertifikat Dai Muda IMCO VII" class="academic-img">
+                        </div>
+                        <div class="academic-body">
+                            <span class="badge-year">2023</span>
+                            <h6>Dai Muda</h6>
+                            <p>Penghargaan atas kemampuan retorika, penguasaan materi keagamaan, dan penyampaian dakwah bernuansa Islami tingkat regional. Dipublikasikan pada kegiatan IMCO VII oleh SMAN 9 Malang.</p>
+                            <a href="akademik/ser1.png" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-glow w-100 mt-auto">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                        </div>
                     </div>
-                    <div class="project-body">
-                        <h6>Gemini</h6>
-                        <p>Kapasitas Input Raksasa: Mampu membaca dan menganalisis dataset berukuran sangat besar sekaligus
-                            Data Up-to-Date: Terhubung langsung dengan Google Search dan ekosistem data Google secara real-time.
-                            Multimodal Canggih: Cepat mengenali pola dari gabungan teks, gambar, dan tabel data.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-6 col-lg-4 fade-up">
+                    <div class="academic-card glass-card">
+                        <div class="academic-img-wrap">
+                            <img src="akademik/ser2.png" alt="Sertifikat Penulis Nasional GSMB" class="academic-img">
+                        </div>
+                        <div class="academic-body">
+                            <span class="badge-year">2023</span>
+                            <h6>Penulis Nasional</h6>
+                            <p>Bentuk apresiasi atas dedikasi dan kontribusi aktif dalam bidang literasi nasional melalui program Gerakan Sekolah Menulis Buku Nasional (GSMB Nasional) oleh Nyalanesia.</p>
+                            <a href="akademik/ser2.png" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-glow w-100 mt-auto">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-6 col-lg-4 fade-up">
+                    <div class="academic-card glass-card">
+                        <div class="academic-img-wrap">
+                            <img src="akademik/ser3.png" alt="Sertifikat Kompetensi Menulis" class="academic-img">
+                        </div>
+                        <div class="academic-body">
+                            <span class="badge-year">2023</span>
+                            <h6>Kompetensi Menulis</h6>
+                            <p>Sertifikat kompetensi yang membuktikan keahlian dan kepiawaian dalam mengolah kata serta menyusun karya tulis melalui keikutsertaan dalam rangkaian pelatihan literasi nasional.</p>
+                            <a href="akademik/ser3.png" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-glow w-100 mt-auto">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-md-6 col-lg-4 fade-up">
+                    <div class="academic-card glass-card">
+                        <div class="academic-img-wrap">
+                            <img src="akademik/ser4.png" alt="Sertifikat Akademi Penyair Juara" class="academic-img">
+                        </div>
+                        <div class="academic-body">
+                            <span class="badge-year">2024</span>
+                            <h6>Akademi Penyair Juara</h6>
+                            <p>Kelulusan Workshop 52 Jam Akademi Penyair Juara Nyalanesia. Menegaskan komitmen tinggi dalam mengasah bakat kepenyairan dan keterampilan seni sastra secara intensif.</p>
+                            <a href="akademik/ser4.png" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-glow w-100 mt-auto">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="col-md-6 col-lg-4 fade-up">
+                    <div class="academic-card glass-card">
+                        <div class="academic-img-wrap">
+                            <img src="akademik/ser5.png" alt="Sertifikat Juara 1 Lomba Dai" class="academic-img">
+                        </div>
+                        <div class="academic-body">
+                            <span class="badge-year">2025</span>
+                            <h6>Juara I Lomba Dai</h6>
+                            <p>Penghargaan Juara I Lomba Dai dalam rangka Isra' Mi'raj Nabi Muhammad SAW. Menunjukkan keahlian public speaking tinggi dalam menginspirasi generasi muda.</p>
+                            <a href="akademik/ser5.png" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-glow w-100 mt-auto">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-4 fade-up" style="animation-delay: 0.1s;">
-                <div class="project-card glass-card">
-                    <div class="project-img-wrap">
-                        <img src="work/2.jpg" class="project-img" alt="Project 2" onerror="this.src='https://via.placeholder.com/400x250/12182B/7C5CFF?text=Project+2'">
+            <!-- Trading / Unique Skill Section -->
+            <div class="trading-container glass-card p-4 p-lg-5 mt-5 fade-up position-relative overflow-hidden">
+                <div class="row text-center mb-4 position-relative z-2">
+                    <div class="col">
+                        <p class="section-eyebrow text-highlight">// FINANCIAL ANALYTICS &amp; MARKET</p>
+                        <h2 class="section-title">Unique Skill &amp; Trading</h2>
+                        <p class="section-sub text-light-dim">
+                            "Saat ini saya sedang menekuni dunia Financial Market, khususnya Forex Trading. Saya terus belajar dan mengembangkan kemampuan dalam menganalisis market menggunakan pendekatan teknikal."
+                        </p>
                     </div>
-                    <div class="project-body">
-                        <h6>Claude</h6>
-                        <p>Jagonya Coding UI/UX: Mengahasilkan kode frontend (HTML/CSS/React) yang sangat bersih dan rapi.
-                            Instruksi Kompleks: Sangat patuh pada detail desain dan alur logika web yang rumit.
-                            Live Preview: Memudahkan pembuatan tampilan website secara cepat dan presisi.</p>
+                </div>
+
+                <!-- Badges Grid -->
+                <div class="d-flex flex-wrap gap-2 justify-content-center mb-5 position-relative z-2">
+                    <span class="trading-badge"><i class="bi bi-graph-up-arrow me-1"></i> Forex Finance</span>
+                    <span class="trading-badge"><i class="bi bi-diagram-3 me-1"></i> Market Structure</span>
+                    <span class="trading-badge"><i class="bi bi-bar-chart-steps me-1"></i> Candlestick Analysis</span>
+                    <span class="trading-badge"><i class="bi bi-activity me-1"></i> Price Action</span>
+                    <span class="trading-badge"><i class="bi bi-shield-check me-1"></i> Risk Management</span>
+                    <span class="trading-badge"><i class="bi bi-person-badge me-1"></i> Trading Psychology</span>
+                    <span class="trading-badge"><i class="bi bi-box-arrow-in-down-right me-1"></i> Supply &amp; Demand</span>
+                    <span class="trading-badge"><i class="bi bi-layers me-1"></i> Support &amp; Resistance</span>
+                    <span class="trading-badge"><i class="bi bi-droplet-half me-1"></i> Liquidity</span>
+                    <span class="trading-badge"><i class="bi bi-lightning-charge me-1"></i> Break of Structure</span>
+                    <span class="trading-badge"><i class="bi bi-arrow-repeat me-1"></i> Change of Character</span>
+                </div>
+
+                <!-- Trading Cards -->
+                <div class="row g-4 justify-content-center position-relative z-2">
+                    <div class="col-md-4 fade-up">
+                        <div class="trading-card glass-card">
+                            <img src="Unik/trade1.jpeg" alt="Ilustrasi Market Analysis" class="img-fluid rounded-3">
+                            <div class="trading-card-overlay">
+                                <h6>Market Analysis</h6>
+                                <p class="small mb-0">Pemetaan struktur &amp; analisis teknikal harian.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 fade-up">
+                        <div class="trading-card glass-card">
+                            <img src="Unik/trade2.png" alt="Ilustrasi Risk & Portfolio Management" class="img-fluid rounded-3">
+                            <div class="trading-card-overlay">
+                                <h6>Risk &amp; Portfolio</h6>
+                                <p class="small mb-0">Manajemen rasio risiko dan psikologi eksekusi.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 fade-up">
+                        <div class="trading-card glass-card">
+                            <img src="Unik/trade3.jpeg" alt="Ilustrasi Backtesting Lab" class="img-fluid rounded-3">
+                            <div class="trading-card-overlay">
+                                <h6>Backtesting Lab</h6>
+                                <p class="small mb-0">Evaluasi historis data pergerakan harga.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="col-md-6 col-lg-4 fade-up" style="animation-delay: 0.2s;">
-                <div class="project-card glass-card">
-                    <div class="project-img-wrap">
-                        <img src="work/3.jpg" class="project-img" alt="Project 3" onerror="this.src='https://via.placeholder.com/400x250/12182B/7C5CFF?text=Project+3'">
+    <!-- Project / AI Assistant Section -->
+    <section id="work">
+        <div class="container">
+            <div class="row text-center mb-5 fade-up">
+                <div class="col">
+                    <p class="section-eyebrow">// AI INTEGRATION</p>
+                    <h2 class="section-title">Work Assistants</h2>
+                    <div class="title-line"></div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center g-4">
+                <div class="col-md-6 col-lg-4 fade-up">
+                    <div class="project-card glass-card">
+                        <div class="project-img-wrap">
+                            <img src="work/1.jpg" class="project-img" alt="Google Gemini AI Integration" onerror="this.src='https://via.placeholder.com/400x250/080C14/FFD700?text=Gemini+AI'">
+                        </div>
+                        <div class="project-body">
+                            <h6>Google Gemini</h6>
+                            <p>Kapasitas Input Raksasa, terhubung langsung dengan pencarian real-time, serta multimodal canggih untuk memproses teks, gambar, dan analisis tabel data secara cepat.</p>
+                        </div>
                     </div>
-                    <div class="project-body">
-                        <h6>Gpt</h6>
-                        <p>Kuasai Bahasa Trading: Dikenal sangat andal menulis Pine Script (TradingView) dan MQL (MetaTrader).
-                            Analisis & Backtest: Cepat dalam menguji logika strategi trading dan kalkulasi risiko.
-                            Debugging Handal: Sangat ampuh menemukan dan memperbaiki eror pada skrip indikator kustom.</p>
+                </div>
+
+                <div class="col-md-6 col-lg-4 fade-up">
+                    <div class="project-card glass-card">
+                        <div class="project-img-wrap">
+                            <img src="work/2.jpg" class="project-img" alt="Anthropic Claude AI Integration" onerror="this.src='https://via.placeholder.com/400x250/080C14/FFD700?text=Claude+AI'">
+                        </div>
+                        <div class="project-body">
+                            <h6>Anthropic Claude</h6>
+                            <p>Jagonya arsitektur UI/UX clean code (HTML/CSS/React), sangat patuh pada instruksi kompleks dan detail alur logika website modern.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 fade-up">
+                    <div class="project-card glass-card">
+                        <div class="project-img-wrap">
+                            <img src="work/3.jpg" class="project-img" alt="OpenAI ChatGPT Integration" onerror="this.src='https://via.placeholder.com/400x250/080C14/FFD700?text=ChatGPT'">
+                        </div>
+                        <div class="project-body">
+                            <h6>OpenAI ChatGPT</h6>
+                            <p>Sangat andal dalam menulis Pine Script &amp; MQL untuk alur trading, pengujian strategi kuantitatif, serta debugging logika skrip teknis.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-</section>
+        </div>
+    </section>
 
-<!-- Contact Section -->
-<section id="contact">
-    <div class="container">
-        <div class="row text-center mb-5 fade-up">
-            <div class="col">
-                <p class="section-eyebrow">// MARI BERKOMUNIKASI</p>
-                <h2 class="section-title">Contact Me</h2>
-                <p class="section-sub">Punya pertanyaan atau tertarik untuk berkolaborasi? Kirimkan pesan Anda di bawah ini.</p>
-                <div class="title-line"></div>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="row text-center mb-5 fade-up">
+                <div class="col">
+                    <p class="section-eyebrow">// MARI BERKOMUNIKASI</p>
+                    <h2 class="section-title">Contact Me</h2>
+                    <p class="section-sub">Punya pertanyaan atau tertarik untuk berkolaborasi? Kirimkan pesan Anda di bawah ini.</p>
+                    <div class="title-line"></div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center fade-up">
+                <div class="col-lg-7">
+                    <form class="contact-form glass-card p-4 p-md-5">
+                        <div class="mb-3">
+                            <label for="Nama" class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="Nama" placeholder="Masukkan nama Anda..." required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Email" class="form-label">Alamat Email</label>
+                            <input type="email" class="form-control" id="Email" placeholder="nama@domain.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Pesan" class="form-label">Pesan</label>
+                            <textarea class="form-control" id="Pesan" rows="4" placeholder="Tuliskan pesan atau ide kolaborasi..." required></textarea>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-gradient px-5 btn-ripple w-100">
+                                Kirim Pesan <i class="bi bi-send ms-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="row justify-content-center fade-up">
-            <div class="col-lg-7">
-                <form class="contact-form glass-card p-4 p-md-5">
-                    <div class="mb-3">
-                        <label for="Nama" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="Nama" placeholder="Masukkan nama Anda..." required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="Email" class="form-label">Alamat Email</label>
-                        <input type="email" class="form-control" id="Email" placeholder="nama@domain.com" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="Pesan" class="form-label">Pesan</label>
-                        <textarea class="form-control" id="Pesan" rows="4" placeholder="Tuliskan pesan atau ide kolaborasi..." required></textarea>
-                    </div>
-
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-gradient px-5 btn-ripple w-100">
-                            Kirim Pesan <i class="bi bi-send ms-2"></i>
-                        </button>
-                    </div>
-                </form>
+    <!-- Footer -->
+    <footer class="footer-modern text-center position-relative">
+        <div class="container position-relative z-2">
+            <div class="social-links mb-4">
+                <a href="https://www.instagram.com/alifbariqq?igsh=dXNmMDBrZ3l3cGxj&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://github.com/bariqal38-Fx/Bariqal38-Fx.github.io.git" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub"><i class="bi bi-github"></i></a>
             </div>
+            <p class="mb-0 text-muted small">
+                Created with <i class="bi bi-suit-heart-fill text-danger"></i> by 
+                <a href="https://www.instagram.com/alifbariqq?igsh=dXNmMDBrZ3l3cGxj&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-highlight fw-bold">AlifBariq</a> &copy; 2026. All Rights Reserved.
+            </p>
         </div>
-    </div>
-</section>
+    </footer>
 
-<!-- Footer -->
-<footer class="footer-modern text-center position-relative">
-    <div class="container position-relative z-2">
-        <div class="social-links mb-4">
-            <a href="https://www.instagram.com/alifbariqq?igsh=dXNmMDBrZ3l3cGxj&utm_source=qr" target="_blank" class="social-icon"><i class="bi bi-instagram"></i></a>
-            <a href="https://github.com/bariqal38-Fx/Bariqal38-Fx.github.io.git" class="social-icon"><i class="bi bi-github"></i></a>
-        </div>
-        <p class="mb-0 text-muted small">
-            Created with <i class="bi bi-suit-heart-fill text-danger"></i> by 
-            <a href="https://www.instagram.com/alifbariqq?igsh=dXNmMDBrZ3l3cGxj&utm_source=qr" class="text-highlight">AlifBariq</a> &copy; 2026. All Rights Reserved.
-        </p>
-    </div>
-</footer>
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="btn-back-to-top" title="Kembali ke Atas">
+        <i class="bi bi-arrow-up"></i>
+    </button>
 
-<!-- Back to Top Button -->
-<button id="backToTop" class="btn-back-to-top" title="Kembali ke Atas">
-    <i class="bi bi-arrow-up"></i>
-</button>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
 
-<!-- Bootstrap 5 JS Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Custom JavaScript -->
-<script src="script.js"></script>
-
-</body>
-</html>
+    </body>
+    </html>
