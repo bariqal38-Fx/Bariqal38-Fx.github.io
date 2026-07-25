@@ -756,3 +756,16 @@ section {
     color: #030508;
     box-shadow: 0 0 20px var(--gold-main);
 }
+/* ⭐ TOMBOL KUNING - COPY PASTE KE PALING BAWAH FILE style.css KAMU */
+
+.btn-kirim {
+    background-color: #000000 !important;
+    background: #FFD700 !important;
+    color: #000 !important;
+    border: none !important;
+    font-weight: 700 !important;
+    padding: 12px 20px !important;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4) !important;
+    transition: all 0.3s ease !important;
+}
+
