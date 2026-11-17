@@ -140,9 +140,6 @@
                         <a class="btn btn--primary btn--sm" href="${item.repo}" target="_blank" rel="noopener noreferrer">
                             <i class="bi bi-github" aria-hidden="true"></i> Kode Sumber
                         </a>
-                        <a class="btn btn--ghost btn--sm" href="${item.repo}/issues" target="_blank" rel="noopener noreferrer">
-                            Riwayat Perubahan <i class="bi bi-clock-history" aria-hidden="true"></i>
-                        </a>
                     </div>
                 </div>
             </article>
