@@ -3,465 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portofolio Alif Bariq Al-Qalbi - Software Engineering, AI Exploration, dan Financial Market Analysis.">
+    <meta name="theme-color" content="#07080b">
+    <meta name="description" content="Portofolio Alif Bariq Al-Qalbi — Software Engineering, AI Exploration, dan Financial Market Analysis.">
+    <meta name="author" content="Alif Bariq Al-Qalbi">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Alif Bariq | Luxury Tech Portfolio">
+    <meta property="og:description" content="Portofolio Alif Bariq Al-Qalbi — Software Engineering, AI Exploration, dan Financial Market Analysis.">
+    <meta property="og:image" content="img/profil.png">
     <title>Alif Bariq | Luxury Tech Portfolio</title>
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- Favicon (monogram AB, dibuat inline supaya tidak butuh file tambahan) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307080b'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='26' font-weight='700' fill='%23e8c468' text-anchor='middle'%3EAB%3C/text%3E%3C/svg%3E">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons (hanya ikon, tanpa CSS framework) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- CSS utama -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Tandai bahwa JavaScript aktif (dipakai untuk animasi reveal) -->
     <script>document.documentElement.classList.add('js');</script>
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
 </head>
-<body id="home">
 
-<!-- Scroll Progress Bar -->
-<div id="scroll-progress"></div>
+<body>
 
-<!-- Atmospheric Glow Elements -->
-<div class="bg-grid"></div>
-<div class="glow glow-1"></div>
-<div class="glow glow-2"></div>
-<div class="glow glow-3"></div>
-<div id="mouse-glow"></div>
+    <!-- Lewati ke konten (aksesibilitas) -->
+    <a class="skip-link" href="#main">Lewati ke konten</a>
 
-<!-- Navbar Modern -->
-<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand" href="#home">
-            <span class="brand-tag"></span><span class="brand-name">AlifBariq</span><span class="brand-tag"> /</span>
-        </a>
+    <!-- Progress bar gulir -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="bi bi-list fs-1 text-gold"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center">
-                <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#sertifikat">Sertifikat</a></li>
-                <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            </ul>
-        </div>
+    <!-- Dekorasi latar: grid + glow + mouse glow -->
+    <div class="bg-decor" aria-hidden="true">
+        <div class="bg-grid"></div>
+        <div class="glow glow--1"></div>
+        <div class="glow glow--2"></div>
+        <div class="mouse-glow" id="mouseGlow"></div>
     </div>
-</nav>
 
-<!-- Hero Section -->
-<section class="hero d-flex align-items-center" id="hero-section">
-    <div class="container position-relative z-2">
-        <div class="row align-items-center g-5">
-            <!-- Hero Left -->
-            <div class="col-lg-6 text-center text-lg-start fade-up">
-                <div class="profile-avatar-wrapper mb-4">
-                    <img src="img/Screenshot 2026-07-20 191022.png" alt="Foto Profil Alif Bariq Al-Qalbi" class="profile-avatar">
-                    <div class="avatar-glow"></div>
-                </div>
+    <!-- ===================== HEADER / NAVIGASI ===================== -->
+    <header class="site-header" id="siteHeader">
+        <nav class="nav container" aria-label="Navigasi utama">
+            <a class="brand" href="#home">
+                <span class="brand-mark" aria-hidden="true">AB</span>
+                <span class="brand-name">AlifBariq<em>/</em></span>
+            </a>
 
-                <div class="eyebrow mb-3">
-                    <span class="dot"></span> Terbuka untuk Kolaborasi &amp; Inovasi
-                </div>
+            <button class="nav-toggle" id="navToggle" type="button"
+                    aria-expanded="false" aria-controls="navMenu" aria-label="Buka menu">
+                <span></span><span></span><span></span>
+            </button>
 
-                <h1 class="hero-title mb-3">
-                    Halo, Saya <br><span class="text-gradient">Alif Bariq Al-Qalbi</span>
-                </h1>
+            <ul class="nav-menu" id="navMenu">
+                <li><a class="nav-link active" href="#home">Home</a></li>
+                <li><a class="nav-link" href="#about">About</a></li>
+                <li><a class="nav-link" href="#sertifikat">Sertifikat</a></li>
+                <li><a class="nav-link" href="#unique">Unique Skill</a></li>
+                <li><a class="nav-link" href="#work">Work</a></li>
+                <li><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-                <p class="hero-role mb-4">
-                    <span id="typing-text"></span><span class="cursor">|</span>
-                </p>
+    <main id="main">
 
-                <p class="hero-desc mb-4">
-                    Eksplorasi tanpa batas di dunia Rekayasa Perangkat Lunak, Kecerdasan Buatan, serta Analisis Financial Market. Halaman ini adalah etalase perjalanan dan progres eksplorasi saya.
-                </p>
+        <!-- ===================== HERO ===================== -->
+        <section class="hero" id="home" aria-labelledby="hero-title">
+            <div class="container hero-grid">
 
-                <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
-                    <a href="#work" class="btn btn-gradient btn-ripple">
-                        Lihat Proyek <i class="bi bi-arrow-down-right ms-1"></i>
-                    </a>
-                    <a href="#contact" class="btn btn-outline-glow btn-ripple">
-                        Hubungi Saya
-                    </a>
-                </div>
-            </div>
-
-            <!-- Hero Right Terminal -->
-            <div class="col-lg-6 fade-up">
-                <div class="terminal-card glass-card">
-                    <div class="terminal-bar">
-                        <span class="dot-red"></span>
-                        <span class="dot-yellow"></span>
-                        <span class="dot-green"></span>
-                        <span class="terminal-title">Alif.FX — v2.0</span>
+                <div class="hero-copy">
+                    <div class="avatar">
+                        <img src="img/profil.png"
+                             alt="Foto profil Alif Bariq Al-Qalbi" width="210" height="210">
                     </div>
-                    <pre class="terminal-body"><code><span class="tk-key">const</span> <span class="tk-var">developer</span> = {
+
+                    <p class="eyebrow">
+                        <span class="eyebrow-dot" aria-hidden="true"></span>
+                        Terbuka untuk Kolaborasi &amp; Inovasi
+                    </p>
+
+                    <h1 class="hero-title" id="hero-title">
+                        Halo, Saya <br><span class="text-gradient">Alif Bariq Al-Qalbi</span>
+                    </h1>
+
+                    <p class="hero-role">
+                        <span id="typingText"></span><span class="caret" aria-hidden="true"></span>
+                    </p>
+
+                    <p class="hero-desc">
+                        Eksplorasi tanpa batas di dunia Rekayasa Perangkat Lunak, Kecerdasan Buatan,
+                        serta Analisis Financial Market. Halaman ini adalah etalase perjalanan dan
+                        progres eksplorasi saya.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="btn btn--primary" href="#work">
+                            Lihat Proyek <i class="bi bi-arrow-down-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn--ghost" href="#contact">Hubungi Saya</a>
+                    </div>
+                </div>
+
+                <div class="hero-terminal">
+                    <div class="terminal">
+                        <div class="terminal-bar">
+                            <span class="dot dot--red" aria-hidden="true"></span>
+                            <span class="dot dot--yellow" aria-hidden="true"></span>
+                            <span class="dot dot--green" aria-hidden="true"></span>
+                            <span class="terminal-title">Alif.FX — v3.0</span>
+                        </div>
+                        <pre class="terminal-body"><code><span class="tk-key">const</span> <span class="tk-var">developer</span> = {
     <span class="tk-prop">name</span>: <span class="tk-str">"Alif Bariq Al-Qalbi"</span>,
     <span class="tk-prop">focus</span>: [<span class="tk-str">"Artificial Intelligence"</span>, <span class="tk-str">"Web Dev"</span>, <span class="tk-str">"Trading"</span>],
     <span class="tk-prop">mindset</span>: <span class="tk-str">"Continuous Improvement &amp; Data-Driven"</span>,
     <span class="tk-prop">status</span>: <span class="tk-str">"Building the Future"</span>
-    };
+};
 
-    <span class="tk-key">export default</span> developer;</code></pre>
+<span class="tk-key">export default</span> developer;</code></pre>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- About Section -->
-<section id="about">
-    <div class="container">
-        <div class="row text-center mb-5 fade-up">
-            <div class="col">
-                <p class="section-eyebrow">// TENTANG SAYA</p>
-                <h2 class="section-title">About Me</h2>
-                <div class="title-line"></div>
             </div>
-        </div>
+        </section>
 
-        <div class="row justify-content-center align-items-stretch g-4">
-            <div class="col-lg-5 fade-up">
-                <div class="about-card glass-card">
-                    <i class="bi bi-code-slash about-icon"></i>
-                    <h5>Pengembangan Perangkat Lunak</h5>
-                    <p>
-                        Berfokus pada pembuatan antarmuka yang bersih, responsif, dan fungsional. Selalu mencari pendekatan efisien dalam memecahkan masalah koding.
+        <!-- ===================== ABOUT ===================== -->
+        <section class="section" id="about" aria-labelledby="about-title">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">// Tentang Saya</p>
+                    <h2 class="section-title" id="about-title">About Me</h2>
+                    <span class="title-line" aria-hidden="true"></span>
+                </div>
+
+                <!-- Kartu about di-render dari assets/js/data.js -->
+                <div class="grid grid--about" id="aboutCards"></div>
+            </div>
+        </section>
+
+        <!-- ===================== SERTIFIKAT ===================== -->
+        <section class="section" id="sertifikat" aria-labelledby="sertifikat-title">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">// Prestasi &amp; Pendidikan</p>
+                    <h2 class="section-title" id="sertifikat-title">Sertifikat &amp; Penghargaan</h2>
+                    <p class="section-sub">
+                        Penghargaan dan rekam jejak prestasi dalam ajang Lomba Dai, Penulis,
+                        serta Komunikasi Islami.
                     </p>
+                    <span class="title-line" aria-hidden="true"></span>
+                </div>
+
+                <!-- Kartu sertifikat di-render dari assets/js/data.js -->
+                <div class="grid grid--cards" id="certificateGrid"></div>
+
+                <!-- ---- Sub-bagian: Unique Skill & Trading ---- -->
+                <div class="trading" id="unique">
+                    <div class="section-head">
+                        <p class="eyebrow">// Financial Analytics &amp; Market</p>
+                        <h2 class="section-title">Unique Skill &amp; Trading</h2>
+                        <p class="section-sub">
+                            "Saat ini saya sedang menekuni dunia Financial Market, khususnya Forex
+                            Trading. Saya terus belajar dan mengembangkan kemampuan dalam menganalisis
+                            market menggunakan pendekatan teknikal."
+                        </p>
+                    </div>
+
+                    <!-- Badge kemampuan di-render dari assets/js/data.js -->
+                    <div class="badges" id="tradingBadges"></div>
+
+                    <!-- Kartu trading di-render dari assets/js/data.js -->
+                    <div class="grid grid--cards" id="tradingCards"></div>
                 </div>
             </div>
+        </section>
 
-            <div class="col-lg-5 fade-up">
-                <div class="about-card glass-card">
-                    <i class="bi bi-cpu about-icon"></i>
-                    <h5>Eksplorasi AI &amp; Sains Data</h5>
-                    <p>
-                        Memiliki antusiasme tinggi pada penerapan algoritma kecerdasan buatan, pemrosesan data, dan integrasi modul cerdas ke dalam platform modern.
+        <!-- ===================== WORK ===================== -->
+        <section class="section" id="work" aria-labelledby="work-title">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">// AI Integration</p>
+                    <h2 class="section-title" id="work-title">Work Assistants</h2>
+                    <span class="title-line" aria-hidden="true"></span>
+                </div>
+
+                <!-- Kartu proyek di-render dari assets/js/data.js -->
+                <div class="grid grid--cards" id="projectGrid"></div>
+            </div>
+        </section>
+
+        <!-- ===================== CONTACT ===================== -->
+        <section class="section" id="contact" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">// Mari Berkomunikasi</p>
+                    <h2 class="section-title" id="contact-title">Contact Me</h2>
+                    <p class="section-sub">
+                        Punya pertanyaan atau tertarik untuk berkolaborasi? Kirimkan pesan Anda di bawah ini.
                     </p>
+                    <span class="title-line" aria-hidden="true"></span>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Sertifikat Section -->
-<section id="sertifikat">
-    <div class="container">
-        <div class="row text-center mb-5 fade-up">
-            <div class="col">
-                <p class="section-eyebrow">// PRESTASI &amp; PENDIDIKAN</p>
-                <h2 class="section-title">Sertifikat &amp; Penghargaan</h2>
-                <p class="section-sub">Penghargaan dan rekam jejak prestasi dalam ajang Lomba Dai, Penulis, serta Komunikasi Islami.</p>
-                <div class="title-line"></div>
-            </div>
-        </div>
+                <div class="contact-wrap">
+                    <form class="contact-card" id="contactForm" name="submit-to-google-sheet">
+                        <div class="form-alert" id="formAlert" role="status" hidden></div>
 
-        <div class="row g-4 justify-content-center mb-5">
-            <!-- Card 1 -->
-            <div class="col-md-6 col-lg-4 fade-up">
-                <div class="academic-card glass-card">
-                    <div class="academic-img-wrap">
-                        <img src="akademik/ser1.png" alt="Sertifikat Dai Muda IMCO VII" class="academic-img">
-                    </div>
-                    <div class="academic-body">
-                        <span class="badge-year">2023</span>
-                        <h6>Dai Muda</h6>
-                        <p>Penghargaan atas kemampuan retorika, penguasaan materi keagamaan, dan penyampaian dakwah bernuansa Islami tingkat regional. Dipublikasikan pada kegiatan IMCO VII oleh SMAN 9 Malang.</p>
-                        <a href="akademik/ser1.png" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-glow w-100 mt-auto">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="col-md-6 col-lg-4 fade-up">
-                <div class="academic-card glass-card">
-                    <div class="academic-img-wrap">
-                        <img src="akademik/ser2.png" alt="Sertifikat Penulis Nasional GSMB" class="academic-img">
-                    </div>
-                    <div class="academic-body">
-                        <span class="badge-year">2023</span>
-                        <h6>Penulis Nasional</h6>
-                        <p>Bentuk apresiasi atas dedikasi dan kontribusi aktif dalam bidang literasi nasional melalui program Gerakan Sekolah Menulis Buku Nasional (GSMB Nasional) oleh Nyalanesia.</p>
-                        <a href="akademik/ser2.png" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-glow w-100 mt-auto">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="col-md-6 col-lg-4 fade-up">
-                <div class="academic-card glass-card">
-                    <div class="academic-img-wrap">
-                        <img src="akademik/ser3.png" alt="Sertifikat Kompetensi Menulis" class="academic-img">
-                    </div>
-                    <div class="academic-body">
-                        <span class="badge-year">2023</span>
-                        <h6>Kompetensi Menulis</h6>
-                        <p>Sertifikat kompetensi yang membuktikan keahlian dan kepiawaian dalam mengolah kata serta menyusun karya tulis melalui keikutsertaan dalam rangkaian pelatihan literasi nasional.</p>
-                        <a href="akademik/ser3.png" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-glow w-100 mt-auto">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="col-md-6 col-lg-4 fade-up">
-                <div class="academic-card glass-card">
-                    <div class="academic-img-wrap">
-                        <img src="akademik/ser4.png" alt="Sertifikat Akademi Penyair Juara" class="academic-img">
-                    </div>
-                    <div class="academic-body">
-                        <span class="badge-year">2024</span>
-                        <h6>Akademi Penyair Juara</h6>
-                        <p>Kelulusan Workshop 52 Jam Akademi Penyair Juara Nyalanesia. Menegaskan komitmen tinggi dalam mengasah bakat kepenyairan dan keterampilan seni sastra secara intensif.</p>
-                        <a href="akademik/ser4.png" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-glow w-100 mt-auto">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="col-md-6 col-lg-4 fade-up">
-                <div class="academic-card glass-card">
-                    <div class="academic-img-wrap">
-                        <img src="akademik/ser5.png" alt="Sertifikat Juara 1 Lomba Dai" class="academic-img">
-                    </div>
-                    <div class="academic-body">
-                        <span class="badge-year">2025</span>
-                        <h6>Juara I Lomba Dai</h6>
-                        <p>Penghargaan Juara I Lomba Dai dalam rangka Isra' Mi'raj Nabi Muhammad SAW. Menunjukkan keahlian public speaking tinggi dalam menginspirasi generasi muda.</p>
-                        <a href="akademik/ser5.png" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-glow w-100 mt-auto">Lihat Sertifikat <i class="bi bi-box-arrow-up-right ms-1"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Trading / Unique Skill Section -->
-        <div class="trading-container glass-card p-4 p-lg-5 mt-5 fade-up position-relative overflow-hidden">
-            <div class="row text-center mb-4 position-relative z-2">
-                <div class="col">
-                    <p class="section-eyebrow text-highlight">// FINANCIAL ANALYTICS &amp; MARKET</p>
-                    <h2 class="section-title">Unique Skill &amp; Trading</h2>
-                    <p class="section-sub text-light-dim">
-                        "Saat ini saya sedang menekuni dunia Financial Market, khususnya Forex Trading. Saya terus belajar dan mengembangkan kemampuan dalam menganalisis market menggunakan pendekatan teknikal."
-                    </p>
-                </div>
-            </div>
-
-            <!-- Badges Grid -->
-            <div class="d-flex flex-wrap gap-2 justify-content-center mb-5 position-relative z-2">
-                <span class="trading-badge"><i class="bi bi-graph-up-arrow me-1"></i> Forex Finance</span>
-                <span class="trading-badge"><i class="bi bi-diagram-3 me-1"></i> Market Structure</span>
-                <span class="trading-badge"><i class="bi bi-bar-chart-steps me-1"></i> Candlestick Analysis</span>
-                <span class="trading-badge"><i class="bi bi-activity me-1"></i> Price Action</span>
-                <span class="trading-badge"><i class="bi bi-shield-check me-1"></i> Risk Management</span>
-                <span class="trading-badge"><i class="bi bi-person-badge me-1"></i> Trading Psychology</span>
-                <span class="trading-badge"><i class="bi bi-box-arrow-in-down-right me-1"></i> Supply &amp; Demand</span>
-                <span class="trading-badge"><i class="bi bi-layers me-1"></i> Support &amp; Resistance</span>
-                <span class="trading-badge"><i class="bi bi-droplet-half me-1"></i> Liquidity</span>
-                <span class="trading-badge"><i class="bi bi-lightning-charge me-1"></i> Break of Structure</span>
-                <span class="trading-badge"><i class="bi bi-arrow-repeat me-1"></i> Change of Character</span>
-            </div>
-
-            <!-- Trading Cards -->
-            <div class="row g-4 justify-content-center position-relative z-2">
-                <div class="col-md-4 fade-up">
-                    <div class="trading-card glass-card">
-                        <img src="Unik/trade1.jpeg" alt="Ilustrasi Market Analysis" class="img-fluid rounded-3">
-                        <div class="trading-card-overlay">
-                            <h6>Market Analysis</h6>
-                            <p class="small mb-0">Pemetaan struktur &amp; analisis teknikal harian.</p>
+                        <div class="form-group">
+                            <label class="form-label" for="nama">Nama Lengkap</label>
+                            <input class="form-control" type="text" id="nama" name="nama"
+                                   placeholder="Masukkan nama Anda..." required>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col-md-4 fade-up">
-                    <div class="trading-card glass-card">
-                        <img src="Unik/trade2.png" alt="Ilustrasi Risk & Portfolio Management" class="img-fluid rounded-3">
-                        <div class="trading-card-overlay">
-                            <h6>Risk &amp; Portfolio</h6>
-                            <p class="small mb-0">Manajemen rasio risiko dan psikologi eksekusi.</p>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Alamat Email</label>
+                            <input class="form-control" type="email" id="email" name="email"
+                                   placeholder="nama@domain.com" required>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col-md-4 fade-up">
-                    <div class="trading-card glass-card">
-                        <img src="Unik/trade3.jpeg" alt="Ilustrasi Backtesting Lab" class="img-fluid rounded-3">
-                        <div class="trading-card-overlay">
-                            <h6>Backtesting Lab</h6>
-                            <p class="small mb-0">Evaluasi historis data pergerakan harga.</p>
+                        <div class="form-group">
+                            <label class="form-label" for="pesan">Pesan</label>
+                            <textarea class="form-control" id="pesan" name="pesan" rows="4"
+                                      placeholder="Tuliskan pesan atau ide kolaborasi..." required></textarea>
                         </div>
+
+                        <button class="btn btn--primary btn--block" id="submitBtn" type="submit">
+                            Kirim Pesan <i class="bi bi-send" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn--block is-hidden" id="loadingBtn" type="button" disabled>
+                            <span class="spinner" aria-hidden="true"></span> Mengirim...
+                        </button>
+                    </form>
+
+                    <div class="contact-alt">
+                        <p class="contact-alt-label">Atau langsung chat lewat WhatsApp</p>
+                        <a class="btn btn--wa" href="https://wa.me/6282142511517" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                            0821 4251 1517
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- Project / AI Assistant Section -->
-<section id="work">
-    <div class="container">
-        <div class="row text-center mb-5 fade-up">
-            <div class="col">
-                <p class="section-eyebrow">// AI INTEGRATION</p>
-                <h2 class="section-title">Work Assistants</h2>
-                <div class="title-line"></div>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="social">
+                <a href="https://wa.me/6282142511517" target="_blank" rel="noopener noreferrer"
+                   title="WhatsApp" aria-label="WhatsApp Alif Bariq">
+                    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/alifbariqq" target="_blank" rel="noopener noreferrer"
+                   title="Instagram" aria-label="Instagram Alif Bariq">
+                    <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/bariqal38-Fx" target="_blank" rel="noopener noreferrer"
+                   title="GitHub" aria-label="GitHub Alif Bariq">
+                    <i class="bi bi-github" aria-hidden="true"></i>
+                </a>
             </div>
+            <p>
+                Created with <i class="bi bi-suit-heart-fill" aria-hidden="true"></i> by
+                <a href="https://www.instagram.com/alifbariqq" target="_blank" rel="noopener noreferrer">AlifBariq</a>
+                &copy; <span id="year">2026</span>. All Rights Reserved.
+            </p>
         </div>
+    </footer>
 
-        <div class="row justify-content-center g-4">
-            <div class="col-md-6 col-lg-4 fade-up">
-                <div class="project-card glass-card">
-                    <div class="project-img-wrap">
-                        <img src="work/1.jpg" class="project-img" alt="Google Gemini AI Integration" onerror="this.src='https://via.placeholder.com/400x250/080C14/FFD700?text=Gemini+AI'">
-                    </div>
-                    <div class="project-body">
-                        <h6>Google Gemini</h6>
-                        <p>Kapasitas Input Raksasa, terhubung langsung dengan pencarian real-time, serta multimodal canggih untuk memproses teks, gambar, dan analisis tabel data secara cepat.</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Tombol kembali ke atas -->
+    <button class="back-to-top" id="backToTop" type="button" title="Kembali ke atas" aria-label="Kembali ke atas">
+        <i class="bi bi-arrow-up" aria-hidden="true"></i>
+    </button>
 
-            <div class="col-md-6 col-lg-4 fade-up">
-                <div class="project-card glass-card">
-                    <div class="project-img-wrap">
-                        <img src="work/2.jpg" class="project-img" alt="Anthropic Claude AI Integration" onerror="this.src='https://via.placeholder.com/400x250/080C14/FFD700?text=Claude+AI'">
-                    </div>
-                    <div class="project-body">
-                        <h6>Anthropic Claude</h6>
-                        <p>Jagonya arsitektur UI/UX clean code (HTML/CSS/React), sangat patuh pada instruksi kompleks dan detail alur logika website modern.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 fade-up">
-                <div class="project-card glass-card">
-                    <div class="project-img-wrap">
-                        <img src="work/3.jpg" class="project-img" alt="OpenAI ChatGPT Integration" onerror="this.src='https://via.placeholder.com/400x250/080C14/FFD700?text=ChatGPT'">
-                    </div>
-                    <div class="project-body">
-                        <h6>OpenAI ChatGPT</h6>
-                        <p>Sangat andal dalam menulis Pine Script &amp; MQL untuk alur trading, pengujian strategi kuantitatif, serta debugging logika skrip teknis.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact">
-    <div class="container">
-        <div class="row text-center mb-5 fade-up">
-            <div class="col">
-                <p class="section-eyebrow">// MARI BERKOMUNIKASI</p>
-                <h2 class="section-title">Contact Me</h2>
-                <p class="section-sub">Punya pertanyaan atau tertarik untuk berkolaborasi? Kirimkan pesan Anda di bawah ini.</p>
-                <div class="title-line"></div>
-            </div>
-        </div>
-
-        <div class="row justify-content-center fade-up">
-            <div class="col-lg-7">
-                
-             <div class="alert alert-success alert-dismissible d-none my-alert" role="alert">
-  <strong>Berhasil!</strong> Pesan Anda telah dikirim <strong>Terima Kasihh!!</strong>
-  <button type="button" class="btn-close" aria-label="close"></button>
-</div>
-
-                <form name="submit-to-google-sheet" class="contact-form glass-card p-4 p-md-5 " name="submit-to-google-sheet" >
-                    <div class="mb-3">
-                        <label for="Nama" class="form-label">Nama Lengkap</label>
-                        <input type="text" name="nama" class="form-control" id="Nama" placeholder="Masukkan nama Anda..." required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="Email" class="form-label">Alamat Email</label>
-                        <input type="email" name="email" class="form-control" id="Email" placeholder="nama@domain.com" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="Pesan" class="form-label">Pesan</label>
-                        <textarea class="form-control" id="Pesan" rows="4" placeholder="Tuliskan pesan atau ide kolaborasi..." required name="pesan"></textarea>
-                    </div>
-
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-kirim px-5 btn-ripple w-100">
-                            Kirim Pesan <i class="bi bi-send ms-2"></i></button>
-                            <button class="mt-4 btn btn-loading d-none btn-primary" type="button" disabled>
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    LODINGGHH
-                    </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer-modern text-center position-relative">
-    <div class="container position-relative z-2">
-        <div class="social-links mb-4">
-            <a href="https://www.instagram.com/alifbariqq?igsh=dXNmMDBrZ3l3cGxj&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="https://github.com/bariqal38-Fx/Bariqal38-Fx.github.io.git" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub"><i class="bi bi-github"></i></a>
-        </div>
-        <p class="mb-0 text-muted small">
-            Created with <i class="bi bi-suit-heart-fill text-danger"></i> by 
-            <a href="https://www.instagram.com/alifbariqq?igsh=dXNmMDBrZ3l3cGxj&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-highlight fw-bold">AlifBariq</a> &copy; 2026. All Rights Reserved.
-        </p>
-    </div>
-</footer>
-
-<!-- Back to Top Button -->
-<button id="backToTop" class="btn-back-to-top" title="Kembali ke Atas">
-    <i class="bi bi-arrow-up"></i>
-</button>
-
-<!-- Bootstrap 5 JS Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Custom JavaScript -->
-<script src="script.js"></script>
-
-<!-- Google Sheets Integration Script -->
-<script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbxt4C8BLiTquEDwsxknOQgOFcZB86S5c0M__zYsrjs4l40O6CZehs8lbWp42feWeFSX7g/exec';
-const form = document.forms['submit-to-google-sheet'];
-const btnkirim = document.querySelector('.btn-kirim');
-const btnloading = document.querySelector('.btn-loading');
-const myalert = document.querySelector('.my-alert');
-const closeBtn = myalert.querySelector('.btn-close');
-
-// Manual close button
-closeBtn.addEventListener('click', () => {
-  myalert.classList.add('d-none');
-});
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  btnloading.classList.remove('d-none');
-  btnkirim.classList.add('d-none');
-
-  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-    .then(() => {
-      btnloading.classList.add('d-none');
-      btnkirim.classList.remove('d-none');
-
-      // Hanya remove d-none (sesuai tutorial)
-      myalert.classList.remove('d-none');
-      
-      form.reset();
-      console.log('Success!');
-    })
-    .catch((error) => {
-      console.error('Error!', error.message);
-      btnloading.classList.add('d-none');
-      btnkirim.classList.remove('d-none');
-      alert('Terjadi kesalahan, silahkan coba lagi!');
-    });
-});
-</script>
-
+    <!-- Data dulu, lalu logika -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
