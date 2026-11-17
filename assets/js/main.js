@@ -118,11 +118,43 @@
         }
     }
 
+    function renderFeatured(item) {
+        const mount = $('#featuredProject');
+        if (!mount) return;
+
+        mount.innerHTML = `
+            <article class="featured-card reveal">
+                <a class="featured-media" href="${item.repo}" target="_blank" rel="noopener noreferrer"
+                   aria-label="Buka project ${item.title}">
+                    <img src="${item.img}" alt="Tampilan ${item.title}" loading="lazy" decoding="async" data-fallback>
+                    <span class="featured-tag">${item.tag}</span>
+                </a>
+                <div class="featured-body">
+                    <p class="featured-kicker">${item.kicker}</p>
+                    <h3>${item.title}</h3>
+                    <p class="featured-desc">${item.desc}</p>
+                    <div class="badges">
+                        ${item.stack.map((tech) => `<span class="badge">${tech}</span>`).join('')}
+                    </div>
+                    <div class="featured-actions">
+                        <a class="btn btn--primary btn--sm" href="${item.repo}" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-github" aria-hidden="true"></i> Kode Sumber
+                        </a>
+                        <a class="btn btn--ghost btn--sm" href="${item.repo}/issues" target="_blank" rel="noopener noreferrer">
+                            Riwayat Perubahan <i class="bi bi-clock-history" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        `;
+    }
+
     function renderAll() {
         renderAbout(PORTFOLIO.about);
         renderCertificates(PORTFOLIO.certificates);
         renderProjects(PORTFOLIO.projects);
         renderTrading(PORTFOLIO.trading);
+        renderFeatured(PORTFOLIO.featured);
         watchImages();
     }
 

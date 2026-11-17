@@ -133,5 +133,16 @@ const PORTFOLIO = {
                 img: 'Unik/trade3.jpeg'
             }
         ]
+    },
+
+    /* Project unggulan yang ditampilkan di portofolio */
+    featured: {
+        title: 'Finance Journal Pro',
+        kicker: 'Web App · Full-Stack · 2026',
+        desc: 'Aplikasi jurnal keuangan pribadi lengkap dengan panel monitoring admin. Pengguna dapat mencatat pemasukan & pengeluaran (teks maupun suara), melihat rasio keuangan, dan mengekspor mutasi ke CSV — semuanya tersimpan aman di PostgreSQL dengan kata sandi terenkripsi bcrypt.',
+        img: 'work/finance-journal-pro.png',
+        tag: 'Full-Stack',
+        stack: ['React', 'TypeScript', 'Express', 'PostgreSQL', 'Neon', 'Firebase', 'Tailwind CSS', 'Vite'],
+        repo: 'https://github.com/bariqal38-Fx/finance'
     }
 };
