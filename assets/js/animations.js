@@ -419,6 +419,38 @@
     }
 
     /* ---------------------------------------------------------------------
+       11. SECTION HEAD — isi judul muncul berjenjang (anime.js)
+       --------------------------------------------------------------------- */
+    function initSectionHeads() {
+        if (!anime) return;
+
+        $$('.section-head').forEach((head) => {
+            const items = Array.from(head.children).filter((el) => el.offsetParent !== null || el.getClientRects().length);
+            if (!items.length) return;
+
+            anime.set(items, { opacity: 0, translateY: 30 });
+
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    io.disconnect();
+                    anime({
+                        targets: items,
+                        opacity:   [0, 1],
+                        translateY: [30, 0],
+                        duration: 900,
+                        easing: 'easeOutExpo',
+                        delay: anime.stagger(110),
+                        complete: () => anime.set(items, { opacity: '', translateY: '' }),
+                    });
+                });
+            }, { threshold: 0.3 });
+
+            io.observe(head);
+        });
+    }
+
+    /* ---------------------------------------------------------------------
        INISIALISASI
        --------------------------------------------------------------------- */
     ready(() => {
@@ -430,6 +462,7 @@
         initHero();
         initSplitTitles();
         initParallax();
+        initSectionHeads();
         initVelocity();
         initMarquee();
         initParticles();
