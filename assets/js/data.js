@@ -129,6 +129,7 @@ const PORTFOLIO = {
         img: 'work/finance-journal-pro.png',
         tag: 'Full-Stack',
         stack: ['React', 'TypeScript', 'Express', 'PostgreSQL', 'Neon', 'Firebase', 'Tailwind CSS', 'Vite'],
+        live: 'https://finance-nu-eight-81.vercel.app/',
         repo: 'https://github.com/bariqal38-Fx/finance'
     }
 };

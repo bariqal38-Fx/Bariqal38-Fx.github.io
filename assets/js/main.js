@@ -115,8 +115,8 @@
 
         mount.innerHTML = `
             <article class="featured-card reveal">
-                <a class="featured-media" href="${item.repo}" target="_blank" rel="noopener noreferrer"
-                   aria-label="Buka project ${item.title}">
+                <a class="featured-media" href="${item.live || item.repo}" target="_blank" rel="noopener noreferrer"
+                   aria-label="Buka ${item.title} secara langsung">
                     <img src="${item.img}" alt="Tampilan ${item.title}" loading="lazy" decoding="async" data-fallback>
                     <span class="featured-tag">${item.tag}</span>
                 </a>
@@ -128,7 +128,10 @@
                         ${item.stack.map((tech) => `<span class="badge">${tech}</span>`).join('')}
                     </div>
                     <div class="featured-actions">
-                        <a class="btn btn--primary btn--sm" href="${item.repo}" target="_blank" rel="noopener noreferrer">
+                        <a class="btn btn--primary btn--sm" href="${item.live || item.repo}" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Lihat Live
+                        </a>
+                        <a class="btn btn--ghost btn--sm" href="${item.repo}" target="_blank" rel="noopener noreferrer">
                             <i class="bi bi-github" aria-hidden="true"></i> Kode Sumber
                         </a>
                     </div>
