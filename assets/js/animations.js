@@ -361,6 +361,7 @@
 
         if (reduceMotion) return;      // hormati pengguna yang mematikan animasi
 
+        initLenis();
         initHero();
         initSplitTitles();
         initParallax();
