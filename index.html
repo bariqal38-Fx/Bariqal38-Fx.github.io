@@ -45,6 +45,15 @@
     <div class="vignette" aria-hidden="true"></div>
     <div class="grain" aria-hidden="true"></div>
 
+    <!-- Garis perjalanan: berbelok mengikuti tiap section (dibuat oleh JS) -->
+    <div class="journey" id="journeyWrap" aria-hidden="true">
+        <svg class="journey__svg" id="journeySvg" preserveAspectRatio="none">
+            <path class="journey__path" id="journeyPath" fill="none" d="" />
+            <path class="journey__path journey__path--done" id="journeyDone" fill="none" d="" />
+        </svg>
+        <div class="journey__nodes" id="journeyNodes"></div>
+    </div>
+
     <!-- Progress bar gulir -->
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 

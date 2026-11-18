@@ -482,6 +482,104 @@
     }
 
     /* ---------------------------------------------------------------------
+       13. GARIS PERJALANAN — berbelok lewat tiap section, terisi saat gulir
+       --------------------------------------------------------------------- */
+    function initJourney() {
+        const wrap = $('#journeyWrap');
+        const svg = $('#journeySvg');
+        const full = $('#journeyPath');
+        const done = $('#journeyDone');
+        const nodesBox = $('#journeyNodes');
+        if (!wrap || !svg || !full || !done || !nodesBox) return;
+
+        let nodes = [];
+        let pathLen = 0;
+
+        const build = () => {
+            const doc = document.documentElement;
+            const vw = doc.clientWidth;
+            const vh = window.innerHeight;
+            const yOff = window.scrollY || 0;
+            const height = Math.max(doc.scrollHeight, vh);
+            const amp = Math.min(vw * 0.17, 210);
+
+            const stops = $$('.section, .hero');
+            const pts = [{ x: vw / 2, y: 0 }];
+
+            stops.forEach((sec, i) => {
+                const r = sec.getBoundingClientRect();
+                const cy = r.top + yOff + r.height / 2;
+                const side = i % 2 === 0 ? -1 : 1;
+                pts.push({ x: vw / 2 + side * amp, y: cy });
+            });
+
+            svg.setAttribute('viewBox', `0 0 ${vw} ${height}`);
+            svg.setAttribute('height', String(height));
+            wrap.style.height = height + 'px';
+
+            let d = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
+            for (let i = 1; i < pts.length; i++) {
+                const a = pts[i - 1];
+                const b = pts[i];
+                const my = (a.y + b.y) / 2;
+                d += ` C ${a.x.toFixed(1)} ${my.toFixed(1)}, ${b.x.toFixed(1)} ${my.toFixed(1)}, ${b.x.toFixed(1)} ${b.y.toFixed(1)}`;
+            }
+            full.setAttribute('d', d);
+            done.setAttribute('d', d);
+
+            nodesBox.innerHTML = '';
+            nodes = pts.slice(1).map((p, i) => {
+                const el = document.createElement('span');
+                el.className = 'journey__node';
+                el.style.left = p.x + 'px';
+                el.style.top = p.y + 'px';
+                el.textContent = String(i + 1).padStart(2, '0');
+                nodesBox.appendChild(el);
+                return { el, y: p.y };
+            });
+
+            pathLen = done.getTotalLength();
+            update();
+
+            // Bangun ulang setelah gambar dimuat (tinggi halaman bisa berubah)
+            $$('img').forEach((img) => {
+                if (img.dataset.journeyBound) return;
+                img.dataset.journeyBound = '1';
+                img.addEventListener('load', build, { once: true });
+            });
+        };
+
+        const update = () => {
+            const doc = document.documentElement;
+            const max = Math.max(1, doc.scrollHeight - window.innerHeight);
+            const progress = Math.max(0, Math.min(1, (window.scrollY || 0) / max));
+
+            if (pathLen > 0) {
+                done.style.strokeDasharray = String(pathLen);
+                done.style.strokeDashoffset = String(pathLen * (1 - progress));
+            }
+
+            const probe = (window.scrollY || 0) + window.innerHeight * 0.45;
+            let active = 0;
+            nodes.forEach((n, i) => {
+                if (n.y <= probe) active = i;
+            });
+            nodes.forEach((n, i) => n.el.classList.toggle('is-active', i === active));
+        };
+
+        let ticking = false;
+        const wake = () => {
+            if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        };
+
+        window.addEventListener('scroll', wake, { passive: true });
+        window.addEventListener('resize', build, { passive: true });
+        window.addEventListener('load', build, { passive: true });
+
+        build();
+    }
+
+    /* ---------------------------------------------------------------------
        INISIALISASI
        --------------------------------------------------------------------- */
     ready(() => {
@@ -497,6 +595,7 @@
         initVelocity();
         initMarquee();
         initDepthParallax();
+        initJourney();
         initParticles();
 
         if (finePointer) {
