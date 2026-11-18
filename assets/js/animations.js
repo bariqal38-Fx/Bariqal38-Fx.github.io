@@ -354,6 +354,71 @@
     }
 
     /* ---------------------------------------------------------------------
+       9. VELOCITY — seberapa cepat halaman digulir (untuk skew judul)
+       --------------------------------------------------------------------- */
+    function initVelocity() {
+        const root = document.documentElement;
+        let lastY = window.scrollY || 0;
+        let vel = 0;
+
+        const loop = () => {
+            const y = window.scrollY || 0;
+            const raw = y - lastY;
+            lastY = y;
+            vel += (raw - vel) * 0.12;
+
+            const norm = Math.max(-1, Math.min(1, vel / 22));
+            root.style.setProperty('--vel', norm.toFixed(3));
+            requestAnimationFrame(loop);
+        };
+
+        requestAnimationFrame(loop);
+    }
+
+    /* ---------------------------------------------------------------------
+       10. MARQUEE — teks berjalan, makin cepat bila guliran makin cepat
+       --------------------------------------------------------------------- */
+    function initMarquee() {
+        const track = $('#hobiMarquee');
+        if (!track) return;
+
+        const base = track.innerHTML;
+        let period = 0;
+
+        const build = () => {
+            track.innerHTML = base + base;
+            const unit = track.scrollWidth / 2;
+            const n = Math.max(2, Math.ceil((window.innerWidth * 2) / Math.max(unit, 1)));
+            track.innerHTML = base.repeat(n);
+            period = track.scrollWidth / n;
+        };
+
+        build();
+        window.addEventListener('resize', build, { passive: true });
+
+        let x = 0;
+        let vel = 0;
+        let lastY = window.scrollY || 0;
+
+        const loop = () => {
+            const y = window.scrollY || 0;
+            const v = y - lastY;
+            lastY = y;
+            vel += (v - vel) * 0.1;
+
+            x += 0.7 + Math.min(9, Math.abs(vel) * 0.55);
+
+            if (period > 0) {
+                const pos = ((x % period) + period) % period;
+                track.style.transform = `translate3d(${(-pos).toFixed(1)}px, 0, 0)`;
+            }
+            requestAnimationFrame(loop);
+        };
+
+        if (!reduceMotion) requestAnimationFrame(loop);
+    }
+
+    /* ---------------------------------------------------------------------
        INISIALISASI
        --------------------------------------------------------------------- */
     ready(() => {
@@ -365,6 +430,8 @@
         initHero();
         initSplitTitles();
         initParallax();
+        initVelocity();
+        initMarquee();
         initParticles();
 
         if (finePointer) {

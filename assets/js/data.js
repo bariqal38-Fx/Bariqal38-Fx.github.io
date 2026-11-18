@@ -103,19 +103,19 @@ const PORTFOLIO = {
         /* Kartu foto kegiatan bermain gitar (urutan = kiri, tengah, kanan) */
         cards: [
             {
-                title: 'Training',
+                title: 'Training di Studio',
                 desc: 'Pemanasan dengan gitar elektrik kesayangan.',
                 img: 'gitar/gitar-1.jpg'
             },
             {
-                title: 'SIMPHOVERS 2026',
+                title: 'Twibon Simphovers',
                 desc: 'Poster resmi acara — tampil memegang gitar elektrik.',
                 img: 'gitar/gitar-2.jpg',
                 featured: true
             },
             {
                 title: 'Perform On Stage',
-                desc: 'Bermain di atas panggung dengan cahaya hangat.',
+                desc: 'Tampil Lomba Simpho.',
                 img: 'gitar/gitar-3.jpg'
             }
         ]
