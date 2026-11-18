@@ -1175,6 +1175,13 @@ textarea.form-control {
 }
 .marquee__track span { padding-right: 3.5rem; }
 
+/* Gambar di dalam kartu muncul halus mengikuti kartunya */
+.js .reveal img {
+    opacity: 0;
+    transition: opacity .85s var(--ease) .14s;
+}
+.js .reveal.in img { opacity: 1; }
+
 @keyframes spin    { to { transform: rotate(1turn); } }
 @keyframes blink   { 50% { opacity: 0; } }
 @keyframes pulse   { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .45; transform: scale(1.35); } }

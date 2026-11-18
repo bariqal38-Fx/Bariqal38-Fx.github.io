@@ -451,6 +451,37 @@
     }
 
     /* ---------------------------------------------------------------------
+       12. PARALAKS KEDALAMAN — grid melayang mengikuti guliran
+       --------------------------------------------------------------------- */
+    function initDepthParallax() {
+        const els = $$('[data-speed]');
+        if (!els.length) return;
+
+        let ticking = false;
+
+        const update = () => {
+            const vh = window.innerHeight || 1;
+            els.forEach((el) => {
+                const r = el.getBoundingClientRect();
+                const progress = (r.top + r.height / 2 - vh / 2) / vh;
+                const speed = parseFloat(el.dataset.speed || '0');
+                // Batasi simpangan supaya kartu tidak terdorong terlalu jauh
+                const offset = Math.max(-70, Math.min(70, progress * speed));
+                el.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+            });
+            ticking = false;
+        };
+
+        const wake = () => {
+            if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        };
+
+        window.addEventListener('scroll', wake, { passive: true });
+        window.addEventListener('resize', wake, { passive: true });
+        update();
+    }
+
+    /* ---------------------------------------------------------------------
        INISIALISASI
        --------------------------------------------------------------------- */
     ready(() => {
@@ -465,6 +496,7 @@
         initSectionHeads();
         initVelocity();
         initMarquee();
+        initDepthParallax();
         initParticles();
 
         if (finePointer) {
