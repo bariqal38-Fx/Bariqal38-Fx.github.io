@@ -100,22 +100,10 @@ const PORTFOLIO = {
     /* Section "Hobi & Gitar" */
     hobi: {
 
-        /* Badge kemampuan (ikon + teks) */
-        badges: [
-            { icon: 'bi-music-note-beamed', text: 'Gitar Akustik' },
-            { icon: 'bi-music-note',        text: 'Gitar Elektrik' },
-            { icon: 'bi-music-note-list',   text: 'Fingerstyle' },
-            { icon: 'bi-play-btn',          text: 'Strumming' },
-            { icon: 'bi-soundwave',         text: 'Teori Akor' },
-            { icon: 'bi-stars',             text: 'Lagu Favorit' },
-            { icon: 'bi-headphones',        text: 'Melodi & Tempo' },
-            { icon: 'bi-patch-check',       text: 'Kreativitas' }
-        ],
-
         /* Kartu foto kegiatan bermain gitar (urutan = kiri, tengah, kanan) */
         cards: [
             {
-                title: 'Latihan di Studio',
+                title: 'Training',
                 desc: 'Pemanasan dengan gitar elektrik kesayangan.',
                 img: 'gitar/gitar-1.jpg'
             },

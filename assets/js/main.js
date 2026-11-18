@@ -94,15 +94,6 @@
     }
 
     function renderHobi(data) {
-        const badgeMount = $('#hobiBadges');
-        if (badgeMount) {
-            badgeMount.innerHTML = data.badges.map((badge) => `
-                <span class="badge">
-                    <i class="bi ${badge.icon}" aria-hidden="true"></i> ${badge.text}
-                </span>
-            `).join('');
-        }
-
         const cardMount = $('#hobiCards');
         if (cardMount) {
             cardMount.innerHTML = data.cards.map((card) => `
