@@ -106,7 +106,7 @@
         const cardMount = $('#hobiCards');
         if (cardMount) {
             cardMount.innerHTML = data.cards.map((card) => `
-                <figure class="hobi-card reveal">
+                <figure class="hobi-card reveal${card.featured ? ' hobi-card--featured' : ''}">
                     <img src="${card.img}" alt="${card.title}"
                          loading="lazy" decoding="async" data-fallback>
                     <figcaption>
@@ -203,6 +203,11 @@
 
         if (backToTop) {
             backToTop.addEventListener('click', () => {
+                // Bila Lenis aktif, pakai scrollTo halus dari Lenis
+                if (window.__smoothScrollTo) {
+                    window.__smoothScrollTo(0);
+                    return;
+                }
                 window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
             });
         }

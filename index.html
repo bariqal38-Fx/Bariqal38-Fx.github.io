@@ -41,6 +41,9 @@
     <!-- Progress bar gulir -->
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
+    <!-- Lapisan partikel (dikendalikan animations.js) -->
+    <canvas class="particles" id="particles" aria-hidden="true"></canvas>
+
     <!-- Dekorasi latar: grid + glow + mouse glow -->
     <div class="bg-decor" aria-hidden="true">
         <div class="bg-grid"></div>
@@ -76,7 +79,7 @@
     <main id="main">
 
         <!-- ===================== HERO ===================== -->
-        <section class="hero" id="home" aria-labelledby="hero-title">
+        <section class="hero" id="home" data-theme="gold" aria-labelledby="hero-title">
             <div class="container hero-grid">
 
                 <div class="hero-copy">
@@ -135,7 +138,7 @@
         </section>
 
         <!-- ===================== ABOUT ===================== -->
-        <section class="section" id="about" aria-labelledby="about-title">
+        <section class="section" id="about" data-theme="blue" aria-labelledby="about-title">
             <div class="container">
                 <div class="section-head">
                     <p class="eyebrow">// Tentang Saya</p>
@@ -149,7 +152,7 @@
         </section>
 
         <!-- ===================== SERTIFIKAT ===================== -->
-        <section class="section" id="sertifikat" aria-labelledby="sertifikat-title">
+        <section class="section" id="sertifikat" data-theme="ivory" aria-labelledby="sertifikat-title">
             <div class="container">
                 <div class="section-head">
                     <p class="eyebrow">// Prestasi &amp; Pendidikan</p>
@@ -168,7 +171,7 @@
         </section>
 
         <!-- ===================== HOBI & GITAR ===================== -->
-        <section class="section" id="hobi" aria-labelledby="hobi-title">
+        <section class="section" id="hobi" data-theme="amber" aria-labelledby="hobi-title">
             <div class="container">
                 <div class="section-head">
                     <p class="eyebrow">// Hobi &amp; Minat</p>
@@ -186,11 +189,19 @@
 
                 <!-- Kartu foto gitar di-render dari assets/js/data.js -->
                 <div class="grid grid--cards" id="hobiCards"></div>
+
+                <!-- Kutipan -->
+                <blockquote class="hobi-quote reveal">
+                    <i class="bi bi-quote" aria-hidden="true"></i>
+                    <p>"Tidak semua kelelahan tubuh bisa dibicarakan secara lisan,
+                       kadang ada seseorang yang menceritakan lelahnya dengan
+                       indah petik jarinya."</p>
+                </blockquote>
             </div>
         </section>
 
         <!-- ===================== WORK ===================== -->
-        <section class="section" id="work" aria-labelledby="work-title">
+        <section class="section" id="work" data-theme="violet" aria-labelledby="work-title">
             <div class="container">
                 <div class="section-head">
                     <p class="eyebrow">// AI Integration</p>
@@ -204,7 +215,7 @@
         </section>
 
         <!-- ===================== FEATURED PROJECT ===================== -->
-        <section class="section" id="project" aria-labelledby="project-title">
+        <section class="section" id="project" data-theme="emerald" aria-labelledby="project-title">
             <div class="container">
                 <div class="section-head">
                     <p class="eyebrow">// Project Unggulan</p>
@@ -222,7 +233,7 @@
         </section>
 
         <!-- ===================== CONTACT ===================== -->
-        <section class="section" id="contact" aria-labelledby="contact-title">
+        <section class="section" id="contact" data-theme="gold" aria-labelledby="contact-title">
             <div class="container">
                 <div class="section-head">
                     <p class="eyebrow">// Mari Berkomunikasi</p>

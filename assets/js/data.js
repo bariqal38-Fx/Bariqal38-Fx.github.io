@@ -112,21 +112,22 @@ const PORTFOLIO = {
             { icon: 'bi-patch-check',       text: 'Kreativitas' }
         ],
 
-        /* Kartu foto kegiatan bermain gitar */
+        /* Kartu foto kegiatan bermain gitar (urutan = kiri, tengah, kanan) */
         cards: [
             {
-                title: 'Gitar Akustik',
-                desc: 'Latihan akor dasar & strumming setiap sore.',
+                title: 'Latihan di Studio',
+                desc: 'Pemanasan dengan gitar elektrik kesayangan.',
                 img: 'gitar/gitar-1.jpg'
             },
             {
-                title: 'Fingerstyle',
-                desc: 'Mempelajari pola petikan jari untuk lagu favorit.',
-                img: 'gitar/gitar-2.jpg'
+                title: 'SIMPHOVERS 2026',
+                desc: 'Poster resmi acara — tampil memegang gitar elektrik.',
+                img: 'gitar/gitar-2.jpg',
+                featured: true
             },
             {
-                title: 'Perform & Jam',
-                desc: 'Bermain bersama teman dan mengekspresikan musik.',
+                title: 'Perform On Stage',
+                desc: 'Bermain di atas panggung dengan cahaya hangat.',
                 img: 'gitar/gitar-3.jpg'
             }
         ]

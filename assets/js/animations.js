@@ -188,14 +188,183 @@
     }
 
     /* ---------------------------------------------------------------------
+       6. TEMA PER SECTION — body[data-active] dikuti accent & nuansa
+       --------------------------------------------------------------------- */
+    function initThemeSpy() {
+        const sections = $$('section[id]');
+        if (!sections.length) return;
+
+        let tops = [];
+        let current = '';
+
+        const measure = () => {
+            tops = sections.map((s) => s.getBoundingClientRect().top + (window.scrollY || 0));
+        };
+
+        const update = () => {
+            const probe = (window.scrollY || 0) + window.innerHeight * 0.42;
+            let idx = 0;
+            for (let i = 0; i < tops.length; i++) {
+                if (tops[i] <= probe) idx = i;
+            }
+            const id = sections[idx].id;
+            if (id !== current) {
+                current = id;
+                document.body.setAttribute('data-active', id);
+            }
+        };
+
+        let raf = null;
+        let stable = 0;
+
+        const tick = () => {
+            raf = null;
+            update();
+            stable += 1;
+            if (stable < 120) raf = requestAnimationFrame(tick);
+        };
+
+        const wake = () => {
+            measure();
+            stable = 0;
+            update();                       // langsung, tidak menunggu bingkai
+            if (!raf) raf = requestAnimationFrame(tick);
+        };
+
+        window.addEventListener('scroll', wake, { passive: true });
+        window.addEventListener('resize', wake, { passive: true });
+
+        measure();
+        update();
+        window.__updateTheme = wake;
+    }
+
+    /* ---------------------------------------------------------------------
+       7. SMOOTH SCROLL (Lenis) — opsional, dilewati bila CDN gagal
+       --------------------------------------------------------------------- */
+    function initLenis() {
+        if (!window.Lenis) return null;
+
+        const lenis = new window.Lenis({
+            lerp: 0.09,
+            smoothWheel: true,
+            touchMultiplier: 1.4,
+        });
+
+        const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
+        requestAnimationFrame(raf);
+
+        // Navigasi anchor & tombol ke atas memakai Lenis (halus, ada offset header)
+        document.addEventListener('click', (event) => {
+            const link = event.target.closest('a[href^="#"]');
+            if (!link) return;
+
+            const id = link.getAttribute('href');
+            if (!id || id.length < 2) return;
+
+            const target = document.querySelector(id);
+            if (!target) return;
+
+            event.preventDefault();
+            lenis.scrollTo(target, { offset: -84, duration: 1.5 });
+        }, true);
+
+        window.__smoothScrollTo = (target) => lenis.scrollTo(target, { duration: 1.5 });
+        window.__lenis = lenis;
+
+        return lenis;
+    }
+
+    /* ---------------------------------------------------------------------
+       8. PARTIKEL — hujan partikel halus berwarna accent (seperti lenis.dev)
+       --------------------------------------------------------------------- */
+    function initParticles() {
+        const canvas = $('#particles');
+        if (!canvas || !canvas.getContext) return;
+
+        const ctx = canvas.getContext('2d');
+        let w = 0;
+        let h = 0;
+        let dpr = 1;
+        let parts = [];
+        let raf = null;
+
+        const density = () => {
+            const area = window.innerWidth * window.innerHeight;
+            return Math.max(24, Math.min(80, Math.round(area / 34000)));
+        };
+
+        const resize = () => {
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
+            w = canvas.width  = Math.floor(window.innerWidth  * dpr);
+            h = canvas.height = Math.floor(window.innerHeight * dpr);
+            canvas.style.width  = window.innerWidth  + 'px';
+            canvas.style.height = window.innerHeight + 'px';
+        };
+
+        const make = () => ({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: (Math.random() * 1.5 + .6) * dpr,
+            vy: -(Math.random() * .22 + .07) * dpr,
+            vx: (Math.random() - .5) * .1 * dpr,
+            a: Math.random() * .45 + .12,
+            tw: Math.random() * Math.PI * 2,
+        });
+
+        const seed = () => { parts = Array.from({ length: density() }, make); };
+
+        const accentRGB = () => {
+            const raw = getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#e8c468';
+            const m = raw.match(/#([0-9a-f]{6})/i);
+            return m
+                ? [parseInt(m[1].slice(0, 2), 16), parseInt(m[1].slice(2, 4), 16), parseInt(m[1].slice(4, 6), 16)]
+                : [232, 196, 104];
+        };
+
+        const draw = () => {
+            ctx.clearRect(0, 0, w, h);
+            const [r, g, b] = accentRGB();
+
+            for (const p of parts) {
+                p.y += p.vy;
+                p.x += p.vx;
+                p.tw += .03;
+
+                if (p.y < -8) { p.y = h + 8; p.x = Math.random() * w; }
+                if (p.x < -8) p.x = w + 8;
+                else if (p.x > w + 8) p.x = -8;
+
+                const alpha = p.a * (.6 + .4 * Math.sin(p.tw));
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${r},${g},${b},${alpha.toFixed(3)})`;
+                ctx.fill();
+            }
+
+            raf = requestAnimationFrame(draw);
+        };
+
+        resize();
+        seed();
+        draw();
+
+        window.addEventListener('resize', () => { resize(); seed(); }, { passive: true });
+        return () => cancelAnimationFrame(raf);
+    }
+
+    /* ---------------------------------------------------------------------
        INISIALISASI
        --------------------------------------------------------------------- */
     ready(() => {
+        initThemeSpy();
+
         if (reduceMotion) return;      // hormati pengguna yang mematikan animasi
 
         initHero();
         initSplitTitles();
         initParallax();
+        initParticles();
 
         if (finePointer) {
             initMagnetic();
