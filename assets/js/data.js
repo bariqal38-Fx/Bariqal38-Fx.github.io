@@ -97,40 +97,37 @@ const PORTFOLIO = {
         }
     ],
 
-    /* Section "Unique Skill & Trading" */
-    trading: {
+    /* Section "Hobi & Gitar" */
+    hobi: {
 
         /* Badge kemampuan (ikon + teks) */
         badges: [
-            { icon: 'bi-graph-up-arrow',        text: 'Forex Finance' },
-            { icon: 'bi-diagram-3',             text: 'Market Structure' },
-            { icon: 'bi-bar-chart-steps',       text: 'Candlestick Analysis' },
-            { icon: 'bi-activity',              text: 'Price Action' },
-            { icon: 'bi-shield-check',          text: 'Risk Management' },
-            { icon: 'bi-person-badge',          text: 'Trading Psychology' },
-            { icon: 'bi-box-arrow-in-down-right', text: 'Supply & Demand' },
-            { icon: 'bi-layers',                text: 'Support & Resistance' },
-            { icon: 'bi-droplet-half',          text: 'Liquidity' },
-            { icon: 'bi-lightning-charge',      text: 'Break of Structure' },
-            { icon: 'bi-arrow-repeat',          text: 'Change of Character' }
+            { icon: 'bi-music-note-beamed', text: 'Gitar Akustik' },
+            { icon: 'bi-music-note',        text: 'Gitar Elektrik' },
+            { icon: 'bi-music-note-list',   text: 'Fingerstyle' },
+            { icon: 'bi-play-btn',          text: 'Strumming' },
+            { icon: 'bi-soundwave',         text: 'Teori Akor' },
+            { icon: 'bi-stars',             text: 'Lagu Favorit' },
+            { icon: 'bi-headphones',        text: 'Melodi & Tempo' },
+            { icon: 'bi-patch-check',       text: 'Kreativitas' }
         ],
 
-        /* Kartu gambar trading */
+        /* Kartu foto kegiatan bermain gitar */
         cards: [
             {
-                title: 'Market Analysis',
-                desc: 'Pemetaan struktur & analisis teknikal harian.',
-                img: 'Unik/trade1.jpeg'
+                title: 'Gitar Akustik',
+                desc: 'Latihan akor dasar & strumming setiap sore.',
+                img: 'gitar/gitar-1.jpg'
             },
             {
-                title: 'Risk & Portfolio',
-                desc: 'Manajemen rasio risiko dan psikologi eksekusi.',
-                img: 'Unik/trade2.png'
+                title: 'Fingerstyle',
+                desc: 'Mempelajari pola petikan jari untuk lagu favorit.',
+                img: 'gitar/gitar-2.jpg'
             },
             {
-                title: 'Backtesting Lab',
-                desc: 'Evaluasi historis data pergerakan harga.',
-                img: 'Unik/trade3.jpeg'
+                title: 'Perform & Jam',
+                desc: 'Bermain bersama teman dan mengekspresikan musik.',
+                img: 'gitar/gitar-3.jpg'
             }
         ]
     },

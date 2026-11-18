@@ -12,7 +12,7 @@
      7.  Terminal
      8.  Section & section-head
      9.  Tombol
-     10. Kartu                (about, sertifikat, trading, proyek)
+     10. Kartu                (about, sertifikat, hobi, proyek)
      11. Form kontak
      12. Footer & tombol ke atas
      13. Animasi & reveal
@@ -710,85 +710,52 @@ button {
     line-height: 1.65;
 }
 
-/* --- Trading --- */
-.trading {
+/* --- Hobi & Gitar --- */
+.hobi {
     position: relative;
     overflow: hidden;
-    scroll-margin-top: calc(var(--header-h) + 12px);
-    margin-top: clamp(3rem, 6vw, 4.5rem);
-    padding: clamp(1.5rem, 4vw, 3rem);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-xl);
-    background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
 }
-.trading::before {
+.hobi::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(600px 220px at 20% 0%, rgba(232,196,104,.12), transparent 70%);
+    background: radial-gradient(600px 260px at 80% 0%, rgba(232,196,104,.10), transparent 70%);
     pointer-events: none;
 }
-.trading .section-head { margin-bottom: 1.5rem; }
-.trading .grid { margin-top: 2rem; }
+.hobi .section-head { margin-bottom: 2rem; }
+.hobi .badges { margin-bottom: 2.4rem; }
 
-.badges {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: .6rem;
-}
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: .45rem;
-    padding: .5rem .95rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: rgba(255,255,255,.04);
-    font-family: var(--font-mono);
-    font-size: .78rem;
-    color: var(--ink);
-    transition: border-color .3s var(--ease), color .3s var(--ease),
-                transform .3s var(--ease), background .3s var(--ease);
-}
-.badge:hover {
-    border-color: rgba(232,196,104,.5);
-    background: rgba(232,196,104,.08);
-    color: var(--gold-2);
-    transform: translateY(-2px);
-}
-
-.trading-card {
+.hobi-card {
     position: relative;
     aspect-ratio: 4 / 3;
     border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     overflow: hidden;
+    background: var(--bg-soft);
 }
-.trading-card img {
+.hobi-card img {
     width: 100%; height: 100%;
     object-fit: cover;
-    transition: transform .6s var(--ease);
+    transition: transform .6s var(--ease), filter .6s var(--ease);
 }
-.trading-card:hover img { transform: scale(1.06); }
-.trading-card figcaption {
+.hobi-card:hover img { transform: scale(1.07); filter: saturate(1.1); }
+.hobi-card figcaption {
     position: absolute;
     inset: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 1.1rem;
+    padding: 1.2rem;
     background: linear-gradient(to top, rgba(4,5,8,.92), transparent 65%);
 }
-.trading-card h3 {
-    font-size: 1rem;
+.hobi-card h3 {
+    font-size: 1.05rem;
     color: var(--gold-2);
 }
-.trading-card p {
+.hobi-card p {
     margin: .25rem 0 0;
     color: #d7dae0;
-    font-size: .82rem;
+    font-size: .84rem;
 }
 
 /* --- Proyek --- */
@@ -1141,4 +1108,55 @@ textarea.form-control {
         transition-duration: .001ms !important;
     }
     .js .reveal { opacity: 1; transform: none; }
+}
+
+/* ==========================================================================
+   15. ANIMASI TAMBAHAN (animations.js + anime.js)
+   ========================================================================== */
+.split-word {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+.split-word.is-hidden-w { opacity: 0; }
+
+/* Teks gradasi bergerak lembut */
+.text-gradient {
+    background-size: 220% auto;
+    animation: gradient-pan 7s linear infinite;
+}
+@keyframes gradient-pan {
+    to { background-position: 220% center; }
+}
+
+/* Sorotan lembut pada kartu, mengikuti kursor */
+.card,
+.hobi-card,
+.featured-card {
+    position: relative;
+}
+.card::after,
+.hobi-card::after,
+.featured-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: inherit;
+    background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%),
+                rgba(232,196,104,.12), transparent 65%);
+    opacity: 0;
+    transition: opacity .35s var(--ease);
+}
+.card:hover::after,
+.hobi-card:hover::after,
+.featured-card:hover::after {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .text-gradient { animation: none; }
+    .card::after,
+    .hobi-card::after,
+    .featured-card::after { display: none; }
 }

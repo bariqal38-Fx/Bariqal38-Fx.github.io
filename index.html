@@ -23,6 +23,9 @@
     <!-- Bootstrap Icons (hanya ikon, tanpa CSS framework) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
+    <!-- anime.js: mesin animasi untuk halaman ini -->
+    <script defer src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+
     <!-- CSS utama -->
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -63,7 +66,7 @@
                 <li><a class="nav-link active" href="#home">Home</a></li>
                 <li><a class="nav-link" href="#about">About</a></li>
                 <li><a class="nav-link" href="#sertifikat">Sertifikat</a></li>
-                <li><a class="nav-link" href="#unique">Unique Skill</a></li>
+                <li><a class="nav-link" href="#hobi">Hobi &amp; Gitar</a></li>
                 <li><a class="nav-link" href="#work">Work</a></li>
                 <li><a class="nav-link" href="#contact">Contact</a></li>
             </ul>
@@ -161,24 +164,28 @@
                 <!-- Kartu sertifikat di-render dari assets/js/data.js -->
                 <div class="grid grid--cards" id="certificateGrid"></div>
 
-                <!-- ---- Sub-bagian: Unique Skill & Trading ---- -->
-                <div class="trading" id="unique">
-                    <div class="section-head">
-                        <p class="eyebrow">// Financial Analytics &amp; Market</p>
-                        <h2 class="section-title">Unique Skill &amp; Trading</h2>
-                        <p class="section-sub">
-                            "Saat ini saya sedang menekuni dunia Financial Market, khususnya Forex
-                            Trading. Saya terus belajar dan mengembangkan kemampuan dalam menganalisis
-                            market menggunakan pendekatan teknikal."
-                        </p>
-                    </div>
+            </div>
+        </section>
 
-                    <!-- Badge kemampuan di-render dari assets/js/data.js -->
-                    <div class="badges" id="tradingBadges"></div>
-
-                    <!-- Kartu trading di-render dari assets/js/data.js -->
-                    <div class="grid grid--cards" id="tradingCards"></div>
+        <!-- ===================== HOBI & GITAR ===================== -->
+        <section class="section" id="hobi" aria-labelledby="hobi-title">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">// Hobi &amp; Minat</p>
+                    <h2 class="section-title" id="hobi-title" data-split>Hobi &amp; Gitar</h2>
+                    <p class="section-sub">
+                        "Di sela aktivitas berkode, saya menghabiskan waktu dengan bermain gitar —
+                        belajar akor, fingerstyle, dan lagu-lagu favorit. Musik mengasah
+                        kesabaran, fokus, dan kreativitas saya."
+                    </p>
+                    <span class="title-line" aria-hidden="true"></span>
                 </div>
+
+                <!-- Badge kemampuan di-render dari assets/js/data.js -->
+                <div class="badges" id="hobiBadges"></div>
+
+                <!-- Kartu foto gitar di-render dari assets/js/data.js -->
+                <div class="grid grid--cards" id="hobiCards"></div>
             </div>
         </section>
 
@@ -302,5 +309,6 @@
     <!-- Data dulu, lalu logika -->
     <script src="assets/js/data.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
 </body>
 </html>

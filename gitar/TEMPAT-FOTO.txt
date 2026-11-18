@@ -1,0 +1,3 @@
+Letakkan foto kegiatan bermain gitar di folder ini.
+Nama file yang dipakai halaman: gitar-1.jpg, gitar-2.jpg, gitar-3.jpg
+(vendor/resize dulu ke maks. ~1200px biar ringan)

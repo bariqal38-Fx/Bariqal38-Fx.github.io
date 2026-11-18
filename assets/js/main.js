@@ -3,7 +3,7 @@
    main.js
    --------------------------------------------------------------------------
    Semua interaksi halaman ada di sini, urutannya:
-     1. Render data        (sertifikat, proyek, trading, about)
+     1. Render data        (sertifikat, proyek, hobi, about)
      2. Navigasi           (menu mobile, efek gulir, link aktif)
      3. Animasi            (reveal, mengetik, glow mengikuti mouse)
      4. Form kontak        (kirim ke Google Sheets)
@@ -93,8 +93,8 @@
         `).join('');
     }
 
-    function renderTrading(data) {
-        const badgeMount = $('#tradingBadges');
+    function renderHobi(data) {
+        const badgeMount = $('#hobiBadges');
         if (badgeMount) {
             badgeMount.innerHTML = data.badges.map((badge) => `
                 <span class="badge">
@@ -103,10 +103,10 @@
             `).join('');
         }
 
-        const cardMount = $('#tradingCards');
+        const cardMount = $('#hobiCards');
         if (cardMount) {
             cardMount.innerHTML = data.cards.map((card) => `
-                <figure class="trading-card reveal">
+                <figure class="hobi-card reveal">
                     <img src="${card.img}" alt="${card.title}"
                          loading="lazy" decoding="async" data-fallback>
                     <figcaption>
@@ -150,7 +150,7 @@
         renderAbout(PORTFOLIO.about);
         renderCertificates(PORTFOLIO.certificates);
         renderProjects(PORTFOLIO.projects);
-        renderTrading(PORTFOLIO.trading);
+        renderHobi(PORTFOLIO.hobi);
         renderFeatured(PORTFOLIO.featured);
         watchImages();
     }
@@ -213,7 +213,7 @@
         const links = $$('#navMenu a');
         if (!links.length || !('IntersectionObserver' in window)) return;
 
-        // Target bisa berupa <section> maupun <div> (mis. #unique).
+        // Target bisa berupa <section> maupun <div> (mis. #hobi).
         const targets = links
             .map((link) => document.getElementById(link.getAttribute('href').slice(1)))
             .filter(Boolean);
