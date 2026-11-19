@@ -433,7 +433,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     left: 50%; top: 50%;
     height: 84%;
     width: auto;
-    transform: translate(-50%, -50%) scale(.6);
+    transform: translate(-50%, -50%) scale(.45);
     will-change: transform, opacity;
     pointer-events: none;
 }
