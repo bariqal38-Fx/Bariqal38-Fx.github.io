@@ -664,6 +664,73 @@
     }
 
     /* ---------------------------------------------------------------------
+       16. SERTIFIKAT — guliran halaman menggerakkan rel ke samping
+       --------------------------------------------------------------------- */
+    function initRailScroll() {
+        const wrap = $('#certWrap');
+        const rail = $('#certificateGrid');
+        if (!wrap || !rail) return;
+
+        let ticking = false;
+
+        const update = () => {
+            const r = wrap.getBoundingClientRect();
+            const vh = window.innerHeight || 1;
+            const total = Math.max(1, r.height - vh);
+            const passed = Math.min(Math.max(-r.top, 0), total);
+            const max = rail.scrollWidth - rail.clientWidth;
+
+            rail.scrollLeft = Math.round((passed / total) * max);
+            ticking = false;
+        };
+
+        const wake = () => {
+            if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        };
+
+        window.addEventListener('scroll', wake, { passive: true });
+        window.addEventListener('resize', wake, { passive: true });
+        update();
+    }
+
+    /* ---------------------------------------------------------------------
+       17. PANGGUNG GITAR — gitar pink membesar, lalu masuk ke foto
+       --------------------------------------------------------------------- */
+    function initHobiStage() {
+        const stage = $('#hobiStage');
+        const photo = stage ? $('.hobi-stage__photo', stage) : null;
+        const guitar = stage ? $('.hobi-stage__guitar', stage) : null;
+        if (!stage || !photo || !guitar) return;
+
+        let ticking = false;
+
+        const update = () => {
+            const r = stage.getBoundingClientRect();
+            const vh = window.innerHeight || 1;
+            const total = Math.max(1, r.height + vh);
+            const passed = Math.min(Math.max(vh - r.top, 0), total);
+            const p = passed / total;
+
+            const zoom = 0.6 + p * 2.1;
+            guitar.style.transform = `translate(-50%, -50%) scale(${zoom.toFixed(3)})`;
+            guitar.style.opacity = String(Math.max(0, 1 - Math.max(0, p - 0.55) / 0.35));
+
+            const reveal = Math.max(0, Math.min(1, (p - 0.3) / 0.5));
+            photo.style.clipPath = `circle(${(reveal * 80).toFixed(1)}% at 50% 58%)`;
+
+            ticking = false;
+        };
+
+        const wake = () => {
+            if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        };
+
+        window.addEventListener('scroll', wake, { passive: true });
+        window.addEventListener('resize', wake, { passive: true });
+        update();
+    }
+
+    /* ---------------------------------------------------------------------
        INISIALISASI
        --------------------------------------------------------------------- */
     ready(() => {
@@ -680,8 +747,8 @@
         initMarquee();
         initDepthParallax();
         initJourney();
-        initRail();
-        initHobiZoom();
+        initRailScroll();
+        initHobiStage();
         initParticles();
 
         if (finePointer) {

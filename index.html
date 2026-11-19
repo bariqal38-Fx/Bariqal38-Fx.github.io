@@ -180,16 +180,15 @@
                     <span class="title-line" aria-hidden="true"></span>
                 </div>
 
-                <!-- Kartu sertifikat: rel horizontal (geser / seret) -->
-                <div class="rail" id="certificateGrid" data-speed="-26"></div>
-                <div class="rail-nav">
-                    <button type="button" class="rail-btn" id="certPrev" aria-label="Sertifikat sebelumnya">
-                        <i class="bi bi-chevron-left" aria-hidden="true"></i>
-                    </button>
-                    <span class="rail-hint">geser / seret</span>
-                    <button type="button" class="rail-btn" id="certNext" aria-label="Sertifikat berikutnya">
-                        <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                    </button>
+                <!-- Kartu sertifikat: bergeser otomatis mengikuti guliran halaman -->
+                <div class="rail-wrap" id="certWrap">
+                    <div class="rail-sticky">
+                        <div class="rail" id="certificateGrid"></div>
+                        <p class="rail-hint">
+                            <i class="bi bi-mouse" aria-hidden="true"></i>
+                            gulir ke bawah — sertifikat bergeser otomatis
+                        </p>
+                    </div>
                 </div>
 
             </div>
@@ -210,6 +209,12 @@
                         kesabaran, fokus, dan kreativitas saya."
                     </p>
                     <span class="title-line" aria-hidden="true"></span>
+                </div>
+
+                <!-- Panggung zoom: gitar pink membesar, lalu masuk ke foto -->
+                <div class="hobi-stage" id="hobiStage">
+                    <div class="hobi-stage__photo"><img src="gitar/gitar-1.jpg" alt="Bermain gitar"></div>
+                    <img class="hobi-stage__guitar" src="gitar/gitar-pink.png" alt="">
                 </div>
 
                 <!-- Marquee dekoratif (digerakkan JS, makin cepat saat gulir cepat) -->

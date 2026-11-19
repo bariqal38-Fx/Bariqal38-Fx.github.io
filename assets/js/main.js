@@ -36,7 +36,17 @@
     /** Pasang penangan error pada semua img yang bertanda data-fallback. */
     function watchImages() {
         $$('img[data-fallback]').forEach((img) => {
-            img.addEventListener('error', () => { img.src = FALLBACK_IMG; }, { once: true });
+            // Muat langsung (jangan ditunda) supaya gambar tidak "ghaib".
+            img.loading = 'eager';
+            let tries = 0;
+            img.addEventListener('error', () => {
+                tries += 1;
+                if (tries <= 2) {              // coba lagi sebelum menyerah
+                    img.setAttribute('src', img.getAttribute('src'));
+                    return;
+                }
+                img.src = FALLBACK_IMG;
+            });
         });
     }
 

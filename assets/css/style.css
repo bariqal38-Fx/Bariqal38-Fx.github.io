@@ -1421,58 +1421,70 @@ body[data-active] { --accent:#c9a24a; --accent-2:#ead9ab; --glow:rgba(201,162,74
     .journey { display: none; }
 }
 
-/* --- Rel horizontal sertifikat --- */
+/* --- Sertifikat: rel horizontal yang digerakkan guliran halaman --- */
+.rail-wrap { height: 250vh; }
+.rail-sticky {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.2rem;
+    padding: 2rem 0;
+}
 .rail {
     display: flex;
     gap: 1.4rem;
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    padding: .6rem .25rem 1.5rem;
+    padding: .6rem .25rem 1.2rem;
     margin: 0 -.25rem;
     scrollbar-width: none;
-    cursor: grab;
-    -webkit-overflow-scrolling: touch;
 }
 .rail::-webkit-scrollbar { display: none; }
-.rail.is-dragging { cursor: grabbing; scroll-snap-type: none; }
-.rail > .certificate-card {
-    flex: 0 0 clamp(250px, 30vw, 330px);
-    scroll-snap-align: start;
-}
-.rail-nav {
+.rail > .certificate-card { flex: 0 0 clamp(250px, 30vw, 330px); }
+.rail-hint {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    margin-top: .4rem;
-}
-.rail-hint {
+    gap: .6rem;
     font-family: var(--font-mono);
     font-size: .72rem;
-    letter-spacing: .28em;
+    letter-spacing: .24em;
     text-transform: uppercase;
     color: var(--muted-2);
 }
-.rail-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    border: 1px solid var(--border-2);
-    background: var(--surface);
-    color: var(--gold-2);
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background .35s var(--ease), border-color .35s var(--ease),
-                transform .35s var(--ease), color .35s var(--ease);
+
+/* --- Panggung zoom gitar pink --- */
+.hobi-stage {
+    position: sticky;
+    top: 0;
+    height: 78vh;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border: 1px solid rgba(214,188,142,.35);
+    border-radius: var(--radius-lg);
+    background: #100c07;
 }
-.rail-btn:hover {
-    background: rgba(201,162,74,.16);
-    border-color: var(--gold);
-    color: var(--gold-2);
-    transform: translateY(-2px);
+.hobi-stage__photo {
+    position: absolute;
+    inset: 0;
+    clip-path: circle(0% at 50% 58%);
+}
+.hobi-stage__photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+.hobi-stage__guitar {
+    position: absolute;
+    left: 50%; top: 50%;
+    height: 82%;
+    width: auto;
+    transform: translate(-50%, -50%) scale(.6);
+    filter: drop-shadow(0 18px 40px rgba(0,0,0,.6));
+    will-change: transform, opacity;
+    pointer-events: none;
 }
 
 /* --- Latar gitar di section Hobi: membesar saat digulir --- */
