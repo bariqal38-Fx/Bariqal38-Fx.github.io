@@ -756,3 +756,135 @@ textarea.form-control { resize: vertical; min-height: 6rem; }
     }
     .js .reveal, .js .reveal img { opacity: 1; transform: none; }
 }
+
+
+/* ======================================================================
+   SERTIFIKAT — CINCIN 3D BERPUTAR MENGIKUTI GULIRAN
+   ====================================================================== */
+.ring-wrap { height: 420vh; position: relative; }
+.ring-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    overflow: hidden;
+    padding: calc(var(--header-h) + 1.5rem) clamp(1.25rem, 4vw, 3rem) 2rem;
+    background:
+        radial-gradient(ellipse at 50% 45%, rgba(217,164,65,.10) 0%, transparent 60%);
+}
+.ring-scene {
+    flex: 1;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    perspective: 1600px;
+    perspective-origin: 50% 45%;
+}
+.ring {
+    position: relative;
+    width: min(320px, 66vw);
+    height: min(400px, 50vh);
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+.ring .cert {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    flex: none;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    background: #1b1710;
+    border: 1px solid var(--line);
+    backface-visibility: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,.55);
+    will-change: transform, opacity;
+}
+.ring .cert-media { flex: 1; min-height: 0; }
+.ring .cert-media img { height: 100%; }
+
+/* ======================================================================
+   HOBI — MASUK KE DALAM GITAR
+   ====================================================================== */
+.dive { height: 340vh; position: relative; }
+.dive__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 55%, #2a2114 0%, var(--bg) 62%);
+}
+.dive__guitar {
+    position: absolute;
+    left: 50%; top: 50%;
+    height: 78vh;
+    width: auto;
+    transform: translate(-50%, -50%) scale(.55) rotate(-8deg);
+    filter: drop-shadow(0 30px 70px rgba(0,0,0,.65));
+    will-change: transform, opacity;
+    pointer-events: none;
+}
+.dive__portrait {
+    position: absolute;
+    right: clamp(1rem, 5vw, 4rem);
+    bottom: 12vh;
+    width: clamp(170px, 23vw, 310px);
+    margin: 0;
+    background: #1b1710;
+    border: 1px solid var(--line);
+    box-shadow: 0 24px 60px rgba(0,0,0,.6);
+    will-change: transform, opacity;
+}
+.dive__portrait img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center 20%;
+}
+.dive__portrait figcaption {
+    padding: .5rem .65rem;
+    font-family: var(--font-mono);
+    font-size: .58rem;
+    letter-spacing: .2em;
+    color: var(--muted);
+}
+.dive__photo {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    transform: scale(1.35);
+    will-change: transform, opacity;
+}
+.dive__photo img { width: 100%; height: 100%; object-fit: cover; }
+.dive__cap,
+.dive__hint {
+    position: absolute;
+    bottom: 1.2rem;
+    margin: 0;
+    padding: .45rem .7rem;
+    background: rgba(20,17,12,.82);
+    border: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: .62rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+.dive__cap { left: 1.2rem; }
+.dive__hint { left: 50%; transform: translateX(-50%); color: var(--accent); }
+
+@media (max-width: 760px) {
+    .ring-wrap { height: 360vh; }
+    .ring { width: min(260px, 74vw); height: min(360px, 52vh); }
+    .dive { height: 300vh; }
+    .dive__guitar { height: 56vh; }
+    .dive__portrait { width: 40vw; bottom: 16vh; right: .8rem; }
+    .dive__hint { display: none; }
+}

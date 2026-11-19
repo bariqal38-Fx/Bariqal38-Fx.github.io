@@ -130,27 +130,88 @@
     /* --------------------------------------------------------------------
        5. SERTIFIKAT — guliran halaman menggerakkan rel ke samping
        -------------------------------------------------------------------- */
-    function initRail() {
+    function initRing() {
         const wrap = $('#certWrap');
-        const rail = $('#certificateGrid');
-        if (!wrap || !rail) return;
+        const ring = $('#certificateGrid');
+        if (!wrap || !ring) return;
+        const cards = Array.from(ring.children);
+        const n = cards.length;
+        if (!n) return;
+
+        const step = 360 / n;
+        let radius = 420;
+        const measure = () => {
+            radius = Math.round((ring.clientWidth / 2) / Math.tan(Math.PI / n)) + 60;
+        };
+        measure();
+        window.addEventListener('resize', measure);
+
+        const place = (rot) => {
+            cards.forEach((card, i) => {
+                const a = i * step + rot;
+                const facing = Math.cos(a * Math.PI / 180);
+                card.style.transform = `rotateY(${a.toFixed(2)}deg) translateZ(${radius}px)`;
+                card.style.opacity = (0.12 + 0.88 * Math.max(0, facing)).toFixed(3);
+                card.style.zIndex = String(100 + Math.round(facing * 100));
+            });
+        };
+        place(0);
 
         onScroll(() => {
             const r = wrap.getBoundingClientRect();
-            const vh = window.innerHeight || 1;
-            const total = Math.max(1, r.height - vh);
-            const passed = Math.min(Math.max(-r.top, 0), total);
-            const max = rail.scrollWidth - rail.clientWidth;
-
-            rail.scrollLeft = Math.round((passed / total) * max);
+            const total = r.height - window.innerHeight;
+            const passed = Math.min(Math.max(-r.top, 0), Math.max(total, 1));
+            const p = total > 0 ? passed / total : 0;
+            place(-p * 360);
         });
 
-        // Tombol panah tetap bisa dipakai
-        const step = () => Math.max(240, rail.clientWidth * 0.7);
+        const jump = (dir) => {
+            const r = wrap.getBoundingClientRect();
+            const total = r.height - window.innerHeight;
+            const target = window.scrollY - r.top + dir * (total / n);
+            window.scrollTo({ top: target, behavior: 'smooth' });
+        };
         const prev = $('#certPrev');
         const next = $('#certNext');
-        if (prev) prev.addEventListener('click', () => rail.scrollBy({ left: -step(), behavior: 'smooth' }));
-        if (next) next.addEventListener('click', () => rail.scrollBy({ left: step(), behavior: 'smooth' }));
+        if (prev) prev.addEventListener('click', () => jump(-1));
+        if (next) next.addEventListener('click', () => jump(1));
+    }
+
+    /* --------------------------------------------------------------------
+       6. HOBI — menyelam ke dalam gitar raksasa
+       -------------------------------------------------------------------- */
+    function initDive() {
+        const dive = $('#hobiDive');
+        if (!dive) return;
+        const guitar = dive.querySelector('.dive__guitar');
+        const portrait = dive.querySelector('.dive__portrait');
+        const photo = dive.querySelector('.dive__photo');
+        const cap = dive.querySelector('.dive__cap');
+        const hint = dive.querySelector('.dive__hint');
+
+        onScroll(() => {
+            const r = dive.getBoundingClientRect();
+            const total = r.height - window.innerHeight;
+            const passed = Math.min(Math.max(-r.top, 0), Math.max(total, 1));
+            const p = total > 0 ? passed / total : 0;
+
+            const g = Math.min(1, p / 0.72);
+            guitar.style.transform =
+                `translate(-50%, -50%) scale(${(0.55 + g * 7).toFixed(3)}) rotate(${(-8 + g * 12).toFixed(2)}deg)`;
+            guitar.style.opacity = Math.max(0, 1 - Math.max(0, p - 0.60) / 0.16).toFixed(3);
+
+            const q = Math.min(1, p / 0.40);
+            portrait.style.transform =
+                `translate3d(${(q * 70).toFixed(1)}vw, 0, 0) scale(${(1 - q * 0.3).toFixed(3)})`;
+            portrait.style.opacity = Math.max(0, 1 - q * 1.2).toFixed(3);
+
+            const s = Math.max(0, Math.min(1, (p - 0.62) / 0.30));
+            photo.style.opacity = s.toFixed(3);
+            photo.style.transform = `scale(${(1.35 - s * 0.35).toFixed(3)})`;
+
+            if (cap) cap.style.opacity = Math.max(0, 1 - p * 2.2).toFixed(3);
+            if (hint) hint.style.opacity = Math.max(0, 1 - p * 3).toFixed(3);
+        });
     }
 
     /* --------------------------------------------------------------------
@@ -218,15 +279,19 @@
         if (lenis) {
             // Lenis memanggil semua pekerjaan gulir
             initParallax();
-            initRail();
-            initStage();
+            initRing();
+            initDive();
+            // Jaring pengaman: peristiwa gulir asli juga memicu pekerjaan,
+            // supaya efek tetap jalan walau rAF Lenis sedang tertahan.
+            window.addEventListener('scroll', () => scrollJobs.forEach((fn) => fn()), { passive: true });
+            scrollJobs.forEach((fn) => fn());
         } else {
             // Cadangan: Lenis gagal dimuat
             const wake = () => scrollJobs.forEach((fn) => fn());
             window.addEventListener('scroll', wake, { passive: true });
             initParallax();
-            initRail();
-            initStage();
+            initRing();
+            initDive();
             wake();
         }
     });
