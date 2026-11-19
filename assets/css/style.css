@@ -819,7 +819,7 @@ textarea.form-control { resize: vertical; min-height: 6rem; }
 .ring {
     position: relative;
     width: min(320px, 66vw);
-    height: min(400px, 50vh);
+    height: min(440px, 56vh);
     transform-style: preserve-3d;
     will-change: transform;
 }
@@ -837,8 +837,15 @@ textarea.form-control { resize: vertical; min-height: 6rem; }
     box-shadow: 0 24px 60px rgba(0,0,0,.55);
     will-change: transform, opacity;
 }
-.ring .cert-media { flex: 1; min-height: 0; }
-.ring .cert-media img { height: 100%; }
+.ring .cert-media { flex: 0 0 52%; min-height: 0; overflow: hidden; }
+.ring .cert-media img { height: 100%; width: 100%; object-fit: cover; object-position: center top; }
+.ring .cert-body { flex: 1; min-height: 0; overflow: hidden; }
+.ring .cert-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 
 /* ======================================================================
    HOBI — MASUK KE DALAM GITAR
