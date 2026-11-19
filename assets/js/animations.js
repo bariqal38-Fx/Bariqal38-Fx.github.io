@@ -580,6 +580,90 @@
     }
 
     /* ---------------------------------------------------------------------
+       14. REL SERTIFIKAT — geser horizontal (tombol & seret pakai mouse)
+       --------------------------------------------------------------------- */
+    function initRail() {
+        const rail = $('#certificateGrid');
+        if (!rail) return;
+
+        let dragging = false;
+        let startX = 0;
+        let startScroll = 0;
+        let moved = false;
+
+        rail.addEventListener('pointerdown', (e) => {
+            dragging = true;
+            moved = false;
+            startX = e.clientX;
+            startScroll = rail.scrollLeft;
+            rail.setPointerCapture(e.pointerId);
+        });
+
+        rail.addEventListener('pointermove', (e) => {
+            if (!dragging) return;
+            const dx = e.clientX - startX;
+            if (Math.abs(dx) > 4) {
+                moved = true;
+                rail.classList.add('is-dragging');
+            }
+            rail.scrollLeft = startScroll - dx;
+        });
+
+        const stop = () => {
+            dragging = false;
+            rail.classList.remove('is-dragging');
+        };
+        rail.addEventListener('pointerup', stop);
+        rail.addEventListener('pointercancel', stop);
+        rail.addEventListener('pointerleave', stop);
+
+        // Jangan buka tautan kalau yang terjadi itu seretan
+        rail.addEventListener('click', (e) => {
+            if (moved) {
+                e.preventDefault();
+                e.stopPropagation();
+                moved = false;
+            }
+        }, true);
+
+        const step = () => Math.max(240, rail.clientWidth * 0.75);
+        const prev = $('#certPrev');
+        const next = $('#certNext');
+        if (prev) prev.addEventListener('click', () => rail.scrollBy({ left: -step(), behavior: 'smooth' }));
+        if (next) next.addEventListener('click', () => rail.scrollBy({ left: step(), behavior: 'smooth' }));
+    }
+
+    /* ---------------------------------------------------------------------
+       15. ZOOM GITAR — foto latar Hobi membesar mengikuti guliran
+       --------------------------------------------------------------------- */
+    function initHobiZoom() {
+        const sec = $('#hobi');
+        const img = sec ? $('.hobi-bg img', sec) : null;
+        if (!sec || !img) return;
+
+        let ticking = false;
+
+        const update = () => {
+            const r = sec.getBoundingClientRect();
+            const vh = window.innerHeight || 1;
+            const total = Math.max(1, r.height + vh);
+            const passed = Math.min(Math.max(vh - r.top, 0), total);
+            const progress = passed / total;
+
+            img.style.transform = `scale(${(1 + progress * 0.8).toFixed(3)})`;
+            ticking = false;
+        };
+
+        const wake = () => {
+            if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        };
+
+        window.addEventListener('scroll', wake, { passive: true });
+        window.addEventListener('resize', wake, { passive: true });
+        update();
+    }
+
+    /* ---------------------------------------------------------------------
        INISIALISASI
        --------------------------------------------------------------------- */
     ready(() => {
@@ -596,6 +680,8 @@
         initMarquee();
         initDepthParallax();
         initJourney();
+        initRail();
+        initHobiZoom();
         initParticles();
 
         if (finePointer) {

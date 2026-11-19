@@ -1421,6 +1421,83 @@ body[data-active] { --accent:#c9a24a; --accent-2:#ead9ab; --glow:rgba(201,162,74
     .journey { display: none; }
 }
 
+/* --- Rel horizontal sertifikat --- */
+.rail {
+    display: flex;
+    gap: 1.4rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    padding: .6rem .25rem 1.5rem;
+    margin: 0 -.25rem;
+    scrollbar-width: none;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+}
+.rail::-webkit-scrollbar { display: none; }
+.rail.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+.rail > .certificate-card {
+    flex: 0 0 clamp(250px, 30vw, 330px);
+    scroll-snap-align: start;
+}
+.rail-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: .4rem;
+}
+.rail-hint {
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+}
+.rail-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-2);
+    background: var(--surface);
+    color: var(--gold-2);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background .35s var(--ease), border-color .35s var(--ease),
+                transform .35s var(--ease), color .35s var(--ease);
+}
+.rail-btn:hover {
+    background: rgba(201,162,74,.16);
+    border-color: var(--gold);
+    color: var(--gold-2);
+    transform: translateY(-2px);
+}
+
+/* --- Latar gitar di section Hobi: membesar saat digulir --- */
+.hobi-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+}
+.hobi-bg img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: .85;
+    transform: scale(1);
+    transform-origin: 50% 42%;
+    will-change: transform;
+}
+.hobi-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+        rgba(23,18,9,.78) 0%, rgba(23,18,9,.38) 38%, rgba(23,18,9,.74) 100%);
+}
+
 /* --- Kartu tengah (SIMPHOVERS) --- */
 .hobi-card--featured {
     border-color: rgba(201,162,74,.75);
