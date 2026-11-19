@@ -169,11 +169,8 @@
             const passed = Math.min(Math.max(vh - r.top, 0), total);
             const p = passed / total;
 
-            guitar.style.transform = `translate(-50%, -50%) scale(${(0.6 + p * 2.1).toFixed(3)})`;
-            guitar.style.opacity = String(Math.max(0, 1 - Math.max(0, p - 0.55) / 0.35));
-
-            const reveal = Math.max(0, Math.min(1, (p - 0.3) / 0.5));
-            photo.style.clipPath = `circle(${(reveal * 80).toFixed(1)}% at 50% 58%)`;
+            guitar.style.transform = `translate(-50%, -50%) scale(${(0.7 + p * 1.6).toFixed(3)})`;
+            guitar.style.opacity = String(Math.max(0, 1 - Math.max(0, p - 0.45) / 0.35));
         });
     }
 
