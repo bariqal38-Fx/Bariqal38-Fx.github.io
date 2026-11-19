@@ -130,39 +130,25 @@
     /* --------------------------------------------------------------------
        5. SERTIFIKAT — guliran halaman menggerakkan rel ke samping
        -------------------------------------------------------------------- */
-    function initRing() {
+    function initRail() {
         const wrap = $('#certWrap');
-        const ring = $('#certificateGrid');
-        if (!wrap || !ring) return;
-        const cards = Array.from(ring.children);
-        const n = cards.length;
-        if (!n) return;
+        const rail = $('#certificateGrid');
+        const viewport = wrap && wrap.querySelector('.rail-viewport');
+        if (!wrap || !rail || !viewport) return;
 
-        const step = 360 / n;
-        let radius = 420;
+        let max = 0;
         const measure = () => {
-            radius = Math.round((ring.clientWidth / 2) / Math.tan(Math.PI / n)) + 60;
+            max = Math.max(0, rail.scrollWidth - viewport.clientWidth);
         };
         measure();
         window.addEventListener('resize', measure);
 
-        const place = (rot) => {
-            cards.forEach((card, i) => {
-                const a = i * step + rot;
-                const facing = Math.cos(a * Math.PI / 180);
-                card.style.transform = `rotateY(${a.toFixed(2)}deg) translateZ(${radius}px)`;
-                card.style.opacity = (0.12 + 0.88 * Math.max(0, facing)).toFixed(3);
-                card.style.zIndex = String(100 + Math.round(facing * 100));
-            });
-        };
-        place(0);
-
-        // Rotasi dihaluskan: nilai aktual mengejar target secara bertahap
+        // Gerakan dihaluskan: posisi aktual mengejar target tiap frame
         let target = 0, current = 0, raf = null;
         const ease = () => {
-            current += (target - current) * 0.14;
-            if (Math.abs(target - current) < 0.02) current = target;
-            place(current);
+            current += (target - current) * 0.12;
+            if (Math.abs(target - current) < 0.15) current = target;
+            rail.style.transform = `translate3d(${current.toFixed(2)}px, 0, 0)`;
         };
         const loop = () => {
             ease();
@@ -174,7 +160,7 @@
             const total = r.height - window.innerHeight;
             const passed = Math.min(Math.max(-r.top, 0), Math.max(total, 1));
             const p = total > 0 ? passed / total : 0;
-            target = -p * 360;
+            target = -p * max;
             ease();
             if (!raf && current !== target) raf = requestAnimationFrame(loop);
         });
@@ -182,8 +168,11 @@
         const jump = (dir) => {
             const r = wrap.getBoundingClientRect();
             const total = r.height - window.innerHeight;
-            const target = window.scrollY - r.top + dir * (total / n);
-            window.scrollTo({ top: target, behavior: 'smooth' });
+            const card = rail.querySelector('.cert');
+            const stepPx = card ? card.getBoundingClientRect().width + 24 : 320;
+            const frac = max > 0 ? stepPx / max : 0.2;
+            const targetY = window.scrollY - r.top + dir * frac * total;
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
         };
         const prev = $('#certPrev');
         const next = $('#certNext');
@@ -287,7 +276,7 @@
         if (lenis) {
             // Lenis memanggil semua pekerjaan gulir
             initParallax();
-            initRing();
+            initRail();
             initDive();
             // Jaring pengaman: peristiwa gulir asli juga memicu pekerjaan,
             // supaya efek tetap jalan walau rAF Lenis sedang tertahan.
@@ -298,7 +287,7 @@
             const wake = () => scrollJobs.forEach((fn) => fn());
             window.addEventListener('scroll', wake, { passive: true });
             initParallax();
-            initRing();
+            initRail();
             initDive();
             wake();
         }
