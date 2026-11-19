@@ -104,7 +104,7 @@ const PORTFOLIO = {
         cards: [
             {
                 title: 'Training di Studio',
-                desc: 'Pemanasan dengan gitar elektrik kesayangan.',
+                desc: 'Pemanasan dengan gitar elektrik studio.',
                 img: 'gitar/gitar-1.jpg'
             },
             {
