@@ -157,12 +157,26 @@
         };
         place(0);
 
+        // Rotasi dihaluskan: nilai aktual mengejar target secara bertahap
+        let target = 0, current = 0, raf = null;
+        const ease = () => {
+            current += (target - current) * 0.14;
+            if (Math.abs(target - current) < 0.02) current = target;
+            place(current);
+        };
+        const loop = () => {
+            ease();
+            raf = current !== target ? requestAnimationFrame(loop) : null;
+        };
+
         onScroll(() => {
             const r = wrap.getBoundingClientRect();
             const total = r.height - window.innerHeight;
             const passed = Math.min(Math.max(-r.top, 0), Math.max(total, 1));
             const p = total > 0 ? passed / total : 0;
-            place(-p * 360);
+            target = -p * 360;
+            ease();
+            if (!raf && current !== target) raf = requestAnimationFrame(loop);
         });
 
         const jump = (dir) => {
@@ -184,8 +198,7 @@
         const dive = $('#hobiDive');
         if (!dive) return;
         const guitar = dive.querySelector('.dive__guitar');
-        const portrait = dive.querySelector('.dive__portrait');
-        const photo = dive.querySelector('.dive__photo');
+        const word = dive.querySelector('.dive__word');
         const cap = dive.querySelector('.dive__cap');
         const hint = dive.querySelector('.dive__hint');
 
@@ -200,14 +213,9 @@
                 `translate(-50%, -50%) scale(${(0.55 + g * 7).toFixed(3)}) rotate(${(-8 + g * 12).toFixed(2)}deg)`;
             guitar.style.opacity = Math.max(0, 1 - Math.max(0, p - 0.60) / 0.16).toFixed(3);
 
-            const q = Math.min(1, p / 0.40);
-            portrait.style.transform =
-                `translate3d(${(q * 70).toFixed(1)}vw, 0, 0) scale(${(1 - q * 0.3).toFixed(3)})`;
-            portrait.style.opacity = Math.max(0, 1 - q * 1.2).toFixed(3);
-
-            const s = Math.max(0, Math.min(1, (p - 0.62) / 0.30));
-            photo.style.opacity = s.toFixed(3);
-            photo.style.transform = `scale(${(1.35 - s * 0.35).toFixed(3)})`;
+            const s = Math.max(0, Math.min(1, (p - 0.60) / 0.30));
+            word.style.opacity = s.toFixed(3);
+            word.style.transform = `scale(${(1.5 - s * 0.5).toFixed(3)})`;
 
             if (cap) cap.style.opacity = Math.max(0, 1 - p * 2.2).toFixed(3);
             if (hint) hint.style.opacity = Math.max(0, 1 - p * 3).toFixed(3);
