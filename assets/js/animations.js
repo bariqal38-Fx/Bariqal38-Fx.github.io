@@ -262,6 +262,60 @@
     }
 
     /* --------------------------------------------------------------------
+       LEMARI — pintu pembuka, bingkai dalam, dan keluar di kontak
+       -------------------------------------------------------------------- */
+    function initWardrobe(lenis) {
+        const ward = document.getElementById('wardrobe');
+        const cab = document.getElementById('cabinet');
+        const contact = document.getElementById('contact');
+        if (!ward) return;
+
+        const unlock = () => {
+            document.body.classList.remove('is-locked');
+            if (lenis && lenis.start) lenis.start();
+        };
+
+        const finish = () => {
+            ward.classList.add('is-done');
+            unlock();
+            if (cab) cab.classList.add('is-on');
+            window.setTimeout(() => { ward.style.display = 'none'; }, 800);
+        };
+
+        const open = () => {
+            if (ward.classList.contains('is-open')) return;
+            ward.classList.add('is-open');
+            window.setTimeout(finish, reduceMotion ? 60 : 1450);
+        };
+
+        // Pengamat kontak: begitu sampai kontak, bingkai lemari memudar
+        if (contact && 'IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    const out = e.isIntersecting && e.intersectionRatio > 0.25;
+                    document.body.classList.toggle('is-outside', out);
+                    if (cab) cab.classList.toggle('is-on', !out && ward.classList.contains('is-done'));
+                });
+            }, { threshold: [0, 0.25, 0.6] });
+            io.observe(contact);
+        }
+
+        if (reduceMotion) { finish(); return; }
+
+        document.body.classList.add('is-locked');
+        if (lenis && lenis.stop) lenis.stop();
+
+        const btn = document.getElementById('openWardrobe');
+        if (btn) btn.addEventListener('click', (e) => { e.stopPropagation(); open(); });
+        ward.addEventListener('click', open);
+        window.addEventListener('wheel', open, { passive: true, once: true });
+        window.addEventListener('touchstart', open, { passive: true, once: true });
+        window.addEventListener('keydown', (e) => {
+            if (['Enter', ' ', 'ArrowDown', 'PageDown'].includes(e.key)) open();
+        });
+    }
+
+    /* --------------------------------------------------------------------
        INISIALISASI
        -------------------------------------------------------------------- */
     ready(() => {
@@ -269,9 +323,10 @@
         initHero();
         initMagnetic();
 
-        if (reduceMotion) return;
+        if (reduceMotion) { initWardrobe(null); return; }
 
         const lenis = initLenis();
+        initWardrobe(lenis);
 
         if (lenis) {
             // Lenis memanggil semua pekerjaan gulir
